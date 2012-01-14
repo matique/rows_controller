@@ -72,7 +72,7 @@ Installation and Testing
 
 As usual:
 
-    gem 'rows' # in Gemfile
+    gem 'rows_controller' # in Gemfile
     bundle
     ( cd spec/dummy; rake db:create db:migrate )
     rake
