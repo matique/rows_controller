@@ -1,0 +1,4 @@
+<%= content_for(content) %>
+<% (names || []).each do |name| %>
+  <input type="submit" name="commit" value="<%=name%>" />
+<% end %>

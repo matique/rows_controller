@@ -1,0 +1,22 @@
+<%
+  # submit links and/or buttons
+  # Requires
+  #   content_for(:submit_<left|right>)
+  #   left|right (links names)
+
+  # left|right must be used inside a form.
+  # The clean content_for variant may be used unbounded.
+
+  left ||= nil
+  right ||= nil
+%>
+<div class="rows_submit" style="width:100%">
+  <input style="display:none" type="submit" name="commit" value="OK" />
+  <p style="float:left">
+    <%= render '/rows/submit_part', :content => :submit_left, :names => left %>
+  </p>
+  <p style="float:right">
+    <%= render '/rows/submit_part', :content => :submit_right, :names => right %>
+  </p>
+  <div style="clear:both"> </div>
+</div>

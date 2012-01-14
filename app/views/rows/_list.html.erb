@@ -1,0 +1,31 @@
+<%
+# Requires resources model_class columns
+# /home/dk/docu/app/views/restful/_list.html.erb
+
+  cnt = 0
+%>
+
+<table class="rows-list">
+  <tr>
+    <% columns.each do |column| %>
+      <th> <%= t("header.#{column}", :default => column) %> </th>
+    <% end %>
+  </tr>
+  <% resources.each do |resource|
+       url = "/#{controller_name}/#{resource.id}"
+       cnt += 1
+  %>
+    <tr id="row_<%= resource.id%>" class="<%= %w{odd even}.at(cnt % 2) %>" >
+      <% columns.each do |column| %>
+	<td> <%= resources_format(resource.send(column)) %> </td>
+      <% end %>
+      <td>
+	<%= link_to t('button.show', :default => 'Show'), url %>
+	<%= link_to t('button.edit', :default => 'Edit'), url + '/edit' %>
+	<%= link_to t('button.delete', :default => 'Delete'), url,
+		:remote => true,
+		:confirm => 'Are you sure?', :method => :delete %>
+      </td>
+    </tr>
+  <% end %>
+</table>
