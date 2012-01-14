@@ -3,15 +3,14 @@ Rows
 
 DRYs Rails controllers. Imagine replacing that @order by 'resource' in the
 controllers/views and, imho, an area for DRYing appears.
-
 Instead of:
 
-  class OrdersController < ApplicationController
-    ...
+    class OrdersController < ApplicationController
+      ...
 
 use:
 
-  class OrdersController < RowsController  # < ApplicationController
+    class OrdersController < RowsController  # < ApplicationController
 
 
 The OrdersController may end there as RowsController has all the usual
@@ -23,9 +22,9 @@ methods from RowsController.
 Protected low level methods like 'resources' may be redefined as well.
 An example:
 
-  def resources
-    @_resources ||= model_class.paginate(:page => params[:page])
-  end
+    def resources
+      @_resources ||= model_class.paginate(:page => params[:page])
+    end
 
 RowsController inherites from ApplicationController, i.e. all the helpers
 defined there will be available.
@@ -62,9 +61,9 @@ is set to nil.
 
 Usage of "copy" requires a defining in config/routes.rb. An example:
 
-  resources :orders
-    get 'copy', :on => :member
-  end
+    resources :orders
+      get 'copy', :on => :member
+    end
 
 
 Installation and Testing
