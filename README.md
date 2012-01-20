@@ -51,13 +51,14 @@ be changed by e.g.:
 The model class can be retrieved with model_class.
 
 
-Copy
-----
+## Enhancements
 
-The method "copy" was added to the RowsController as several applications
-required it. "copy" is like "new", however its attributes are initialized
-from an existing resource. The "id" of the cloned resource
-is set to nil.
+### copy
+
+The method "copy" was added to the RowsController.
+"copy" is like "new", however its attributes are initialized
+from an existing resource.
+The "id" of the cloned resource is set to nil.
 
 Usage of "copy" requires a defining in config/routes.rb. An example:
 
@@ -65,9 +66,15 @@ Usage of "copy" requires a defining in config/routes.rb. An example:
       get 'copy', :on => :member
     end
 
+### columns
 
-Installation and Testing
-------------------------
+Add a class method 'column_headers' to the model
+returning the columns to be displayed by '#index'.
+Default is to display the columns returned by 'content_columns',
+a class method which returns the columns defined by the ActiveRecord model.
+
+
+## Installation and Testing
 
 As usual:
 
@@ -77,8 +84,7 @@ As usual:
     rake
 
 
-Credits
--------
+## Credits
 
 Inspiration from the web.
 Look for:

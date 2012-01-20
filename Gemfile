@@ -1,8 +1,8 @@
 source "http://rubygems.org"
 
-gem "rails", '3.1.0'
+gem 'rails', '3.1.3'
 gem 'jquery-rails'
-gem 'decent_exposure'
+gem 'rows_controller'
 
 group :test do
   gem "capybara"
