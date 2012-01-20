@@ -94,4 +94,4 @@ Look for:
 - decent_exposure
 
 
-Copyright (c) 2009-2011 [Dittmar Krall], released under the MIT license
+Copyright (c) 2009-2012 [Dittmar Krall], released under the MIT license
