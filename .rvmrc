@@ -1,3 +1,4 @@
-rvm use 1.9.2@rails31
+rvm use 1.9.3-p0@rails32
+#rvm use 1.9.2@rails31
 
 # rvm_gemset_create_on_use_flag=1
