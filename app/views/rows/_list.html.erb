@@ -16,7 +16,7 @@
   %>
     <tr id="row_<%= resource.id%>" class="<%= %w{odd even}.at(cnt % 2) %>" >
       <% columns.each do |column| %>
-	<td> <%= resources_format(resource.send(column)) %> </td>
+	<td> <%= resource_format(resource.send(column)) %> </td>
       <% end %>
       <td>
 	<%= link_to t('button.show', :default => 'Show'), url %>

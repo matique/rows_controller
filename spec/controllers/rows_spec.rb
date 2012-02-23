@@ -7,7 +7,7 @@ describe RowsController do
   specify { should respond_to(:model_name) }
   specify { should respond_to(:model_symbol) }
   specify { should respond_to(:model_symbol_plural) }
-  specify { should respond_to(:resources_format) }
+  specify { should respond_to(:resource_format) }
 
   specify { should respond_to(:index) }
   specify { should respond_to(:show) }

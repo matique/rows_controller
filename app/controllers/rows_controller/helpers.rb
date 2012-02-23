@@ -11,7 +11,7 @@ class RowsController < ApplicationController
 
   helper_method :resource, :resources, :columns,
     :model_class, :model_name, :model_symbol, :model_symbol_plural,
-    :resources_format
+    :resource_format
 
   def resource
     return @_resource  if @_resource
@@ -68,16 +68,16 @@ class RowsController < ApplicationController
     ['id'] + model_class.content_columns.collect{|c| c.name }
   end
 
-  def resources_format(x)
-    x = ''  if x.nil?
+  def resource_format(x)
+    x = ''.html_safe  if x.nil?
     bool = x.class == Time || x.class == Date || x.class == DateTime ||
 	   x.class == ActiveSupport::TimeWithZone
-    return x.strftime(DATE_FORMAT)  if bool
-    return x.to_s                   if x.class == Fixnum
-    return 'X'                      if x.class == TrueClass
-    return '&ensp;'                 if x.class == FalseClass
+    return x.strftime(DATE_FORMAT).html_safe  if bool
+    return x.to_s.html_safe         if x.class == Fixnum
+    return 'X'.html_safe            if x.class == TrueClass
+    return '&ensp;'.html_safe       if x.class == FalseClass
     return x.call                   if x.class == Proc
-    return '---'                    if x.empty?
+    return '---'.html_safe          if x.empty?
     str = x.to_s
 ##    str = UTF8FY.iconv(x.to_s)  if APPLICATION_OPTIONS[:customization] == :dk
     return str.gsub(/\r*\n/, '<br/>')
