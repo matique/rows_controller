@@ -55,7 +55,10 @@ class RowsController < ApplicationController
  private
   def save_and_respond(notice, failure_template)
     if resource.save
-      respond_with(resource)
+      respond_with(resource) do |format|
+	format.html { redirect_to :action => :edit, :id => resource.id }
+	format.xml  { render :xml => resource.errors, :status => :unprocessable_entity }
+      end
       flash[:notice] = notice
     else
       respond_with(resource) do |format|
