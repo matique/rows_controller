@@ -1,7 +1,7 @@
 class RowsController < ApplicationController
   require_dependency 'rows_controller/helpers'
 
-  respond_to :html, :xml
+  respond_to :html, :xml, :json
 
   def index
     respond_with(resources)
@@ -38,6 +38,7 @@ class RowsController < ApplicationController
     respond_with(resource) do |format|
       format.html { redirect_to :action => :index }
       format.js   { render :template => 'rows/destroy' }
+      format.json { head :no_content }
     end
     flash[:notice] = t('ui.deleted', :model => model_name,
 		       :default => "%{model} deleted.")
@@ -58,12 +59,14 @@ class RowsController < ApplicationController
       respond_with(resource) do |format|
 	format.html { redirect_to :action => :edit, :id => resource.id }
 	format.xml  { render :xml => resource.errors, :status => :unprocessable_entity }
+	format.json { head :no_content }
       end
       flash[:notice] = notice
     else
       respond_with(resource) do |format|
 	format.html { render :template => failure_template, :id => resource.id }
-	format.xml  { render :xml => resource.errors, :status => :unprocessable_entity }
+	format.xml  { render xml:  resource.errors, :status => :unprocessable_entity }
+	format.jron { render json: resource.errors, :status => :unprocessable_entity }
       end
     end
   end
