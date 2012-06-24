@@ -66,7 +66,7 @@ class RowsController < ApplicationController
       respond_with(resource) do |format|
 	format.html { render :template => failure_template, :id => resource.id }
 	format.xml  { render xml:  resource.errors, :status => :unprocessable_entity }
-	format.jron { render json: resource.errors, :status => :unprocessable_entity }
+	format.json { render json: resource.errors, :status => :unprocessable_entity }
       end
     end
   end
