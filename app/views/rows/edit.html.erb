@@ -4,7 +4,7 @@
  #   partial 'form' template
 
   content_for(:submit_left) { link_to t('button.back', :default => 'Back'),
-			      "/#{controller_name}" }
+			      "/#{controller_name}", class: 'button' }
 %>
 
 <%= render '/shared/error_explanation' %>

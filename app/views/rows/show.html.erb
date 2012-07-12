@@ -4,11 +4,10 @@
  # Requires resource model_name model_symbol
  #   partial 'form' template
 
-  content_for(:submit_left) { link_to t('button.edit', :default => 'Edit'),
-			      url_for(:action => :edit) }
-  content_for(:submit_left) { ' | ' }
   content_for(:submit_left) { link_to t('button.back', :default => 'Back'),
-			      url_for(:action => :index) }
+			      url_for(:action => :index), class: 'button' }
+  content_for(:submit_right) { link_to t('button.edit', :default => 'Edit'),
+			      url_for(:action => :edit), class: 'button' }
 %>
 
 <%= render '/shared/error_explanation' %>
