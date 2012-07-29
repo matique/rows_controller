@@ -13,6 +13,5 @@
 	     :default => 'List %{model} is empty') %></h1>
 <% end %>
 
-<br/>
 <%= link_to t('ui.create', :default => 'Create'),
-	    url_for(:action => :new) %>
+	    url_for(:action => :new), :class => 'button rows-new' %>
