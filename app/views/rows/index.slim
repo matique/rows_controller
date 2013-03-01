@@ -1,0 +1,14 @@
+- # Template for RowsController (index)
+- # Requires resources model_name
+
+- if resources.length > 0
+  h1  = t('ui.listing', :model => model_name,
+	  :default => 'Listing %{model}')
+  = render '/shared/error_explanation'
+  = render '/rows/list', :resources => resources
+- else
+  h1 = t('ui.empty_list', :model => model_name,
+	  :default => 'List %{model} is empty')
+
+= link_to t('ui.create', :default => 'Create'),
+	url_for(:action => :new), :class => 'button rows-new'

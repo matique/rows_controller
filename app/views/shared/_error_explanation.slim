@@ -1,0 +1,9 @@
+- # Requires resource
+
+- if resource && resource.respond_to?(:errors) && resource.errors.any?
+  div#error_explanation
+    h2 #{pluralize(resource.errors.count, "error")} prohibited this template from being saved:
+
+    ul
+    - resource.errors.full_messages.each do |msg|
+      li = msg

@@ -2,6 +2,7 @@ source "http://rubygems.org"
 
 gem 'rails'
 gem 'jquery-rails'
+gem 'slim'
 
 group :test do
   gem "capybara"
