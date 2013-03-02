@@ -55,7 +55,7 @@ The model class can be retrieved with model_class.
 
 ### copy
 
-The method "copy" was added to the RowsController.
+The method "copy" was added to the RowsExtController.
 "copy" is like "new", however its attributes are initialized
 from an existing resource.
 The "id" of the cloned resource is set to nil.
@@ -94,4 +94,4 @@ Look for:
 - decent_exposure
 
 
-Copyright (c) 2009-2012 [Dittmar Krall], released under the MIT license
+Copyright (c) 2009-2013 [Dittmar Krall], released under the MIT license
