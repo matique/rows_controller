@@ -1,3 +1,8 @@
+require 'simplecov'
+SimpleCov.start "rails" do
+  add_filter '/application_controller.rb/'
+end
+
 require 'rubygems'
 require 'spork'
 

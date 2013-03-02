@@ -31,6 +31,7 @@ describe OrdersController, ':' do
     get :show, :id => order.id
     subject.send(:resource).should == order
     assigns(:order).should == order
+    assigns(:row).should == order
   end
 
   it 'checking resources' do
@@ -38,6 +39,7 @@ describe OrdersController, ':' do
     subject.send(:resources).should be_a_kind_of(Array)
     assigns(:orders).should be_a_kind_of(Array)
     assigns(:orders).should == Order.all
+    assigns(:rows).should == Order.all
   end
 
   it 'checking model_class' do
@@ -57,9 +59,7 @@ end
 describe CategoriesController do
   it 'checking model_class' do
     get :index
-# both not working, Why?
-#    subject.send(:model_class).should be_a(Order)
-#    subject.send(:model_class).should == Order
+    subject.send(:model_class).should == Order
     subject.send(:model_name).should == 'Order'
     subject.send(:model_symbol).should == 'order'
     subject.send(:model_symbol_plural).should == 'orders'

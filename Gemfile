@@ -5,12 +5,13 @@ gem 'jquery-rails'
 gem 'slim'
 
 group :test do
-  gem "capybara"
+  gem 'capybara'
   gem 'rspec-rails'
 end
 
 group :development, :test do
-  gem "sqlite3"
+  gem 'sqlite3'
   gem 'watchr'
   gem 'spork'
+  gem 'simplecov', require: false
 end

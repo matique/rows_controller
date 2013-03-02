@@ -5,6 +5,28 @@ class RowsController < ApplicationController
     @model_class
   end
 
+
+ private
+  def resource_new
+    resource = model_class.new(params[model_symbol])
+  end
+
+  def resource_create
+    resource.save
+  end
+
+  def resource_update
+    resource.save
+  end
+
+  def resource_destroy
+    resource.destroy
+  end
+
+  def redirect_to_index
+    redirect_to action: :index
+  end
+
   
  protected
   DATE_FORMAT = '%d.%m.%Y'
@@ -30,6 +52,7 @@ class RowsController < ApplicationController
 
   def resource=(value)
     @_resource = value
+    @row = value
     instance_variable_set("@#{model_symbol}", value)
     value
   end
@@ -41,6 +64,7 @@ class RowsController < ApplicationController
 
   def resources=(value)
     @_resources = value
+    @rows = value
     instance_variable_set("@#{model_symbol_plural}", value)
     value
   end
