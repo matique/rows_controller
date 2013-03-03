@@ -3,7 +3,7 @@ ruby:
  # Requires resource model_name model_symbol
  #   partial 'form' template
 
-  content_for(:submit_left) { link_to t('button.back', :default => 'Back'),
+  content_for(:submit_left) { link_to t('button.back', default: 'Back'),
 			      "/#{controller_name}" }
 
 = render '/shared/error_explanation'
@@ -11,6 +11,5 @@ ruby:
 fieldset.wide class="mask" id=model_symbol
   legend = t('ui.new', model: model_name, default: 'New %{model}')
   = form_for resource do |f|
-    = render 'form', :f => f
-    = render '/rows/submit',
-	       :right => [t('ui.create', :default => 'Create')]
+    = render 'form', f: f
+    = render '/rows/submit', right: [t('ui.create', default: 'Create')]

@@ -28,7 +28,7 @@ class RowsController < ApplicationController
       flash[:notice] = t('ui.created', model: model_name,
 	      default: "%{model} created.")
       respond_with(resource) do |format|
-	format.html { redirect_to_commit }
+	format.html { redirect_to_edit }
 	format.xml  { render xml: resource, status: :created, location: self.model }
 	format.json { head :no_content }
       end
@@ -48,7 +48,7 @@ class RowsController < ApplicationController
       flash[:notice] = t('ui.updated', model: model_name,
 	    default: "%{model} updated.")
       respond_with(resource) do |format|
-	format.html { redirect_to_commit }
+	format.html { redirect_to_edit }
 	format.xml  { head :ok }
 	format.json { head :no_content }
       end

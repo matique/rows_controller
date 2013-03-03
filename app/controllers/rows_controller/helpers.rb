@@ -27,7 +27,7 @@ class RowsController < ApplicationController
     redirect_to action: :index
   end
 
-  def redirect_to_commit
+  def redirect_to_edit
     redirect_to action: :edit, id: resource.id
   end
 
