@@ -23,7 +23,6 @@ class RowsController < ApplicationController
   def create
 #    merge_bag
     resource = model_class.new(params[model_symbol])
-
     if resource_create
       flash[:notice] = t('ui.created', model: model_name,
 	      default: "%{model} created.")
@@ -36,14 +35,13 @@ class RowsController < ApplicationController
       respond_with(resource) do |format|
 	format.html { render template: 'rows/new' }
 	format.xml  { render xml: resource.errors, status: :unprocessable_entity }
-	format.json { head :no_content }
+	format.json { render json: resource.errors, status: :unprocessable_entity }
       end
     end
   end
 
   def update
 #    merge_bag
-
     if resource_update
       flash[:notice] = t('ui.updated', model: model_name,
 	    default: "%{model} updated.")
@@ -59,22 +57,18 @@ class RowsController < ApplicationController
 	format.json { render json: resource.errors, status: :unprocessable_entity }
       end
     end
-
-#    msg = t('ui.updated', :model => model_name,
-#            :default => "%{model} updated.")
-#    flash[:notice] = msg  if resource_update
-#    respond_with(resource)
   end
 
   def destroy
     resource_destroy
     respond_with(resource) do |format|
-      format.html { redirect_to_index }
+      format.html {
+	flash[:notice] = t('ui.deleted', model: model_name)
+	redirect_to_index
+      }
       format.js   { render template: 'rows/destroy' }
       format.json { head :no_content }
     end
-    flash[:notice] = t('ui.deleted', model: model_name,
-		       default: "%{model} deleted.")
   end
 
 
