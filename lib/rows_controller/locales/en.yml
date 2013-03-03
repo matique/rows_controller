@@ -19,15 +19,18 @@ en:
     new: 'New %{model}'
     show: 'Show %{model}'
     updated: '%{model} updated.'
+    edit: 'Edit %{model}'
 
     create: 'Create'
     update: 'Update'
 
   button:
     back: 'Back'
+    create: 'Create'
+    delete: 'Delete'
     edit: 'Edit'
-    delete: 'xDelete'
-    show: 'xShow'
+    show: 'Show'
+    update: 'Update'
 
   header:
 #    to_s: 'Test'

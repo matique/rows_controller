@@ -24,10 +24,10 @@ de:
     update: 'Update'
 
   button:
-    back: 'Back'
-    edit: 'Edit'
+    back: 'Zurueck'
+    edit: 'Aendern'
     delete: 'Löschen'
-    show: 'DShow'
+    show: 'Anzeige'
 
   header:
 #    to_s: 'Test'

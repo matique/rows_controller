@@ -6,7 +6,7 @@ ruby:
 table.rows-list
  tr
   - columns.each do |column|
-   th = t("header.#{column}", default: column)
+   th = t("header.#{column}")
 
  - resources.each do |resource|
   - url = "/#{controller_name}/#{resource.id}"
@@ -15,8 +15,8 @@ table.rows-list
    - columns.each do |column|
     td = resource_format(resource.send(column))
    td
-    = link_to t('button.show', default: 'Show'), url
-    = link_to t('button.edit', default: 'Edit'), url + '/edit'
-    = link_to t('button.delete', default: 'Delete'), url,
+    = link_to t('button.show'),   url
+    = link_to t('button.edit'),   url + '/edit'
+    = link_to t('button.delete'), url,
        remote: true,
        confirm: 'Are you sure?', method: :delete

@@ -2,12 +2,10 @@
 - # Requires resources model_name
 
 - if resources.length > 0
-  h1  = t('ui.listing', model: model_name, default: 'Listing %{model}')
+  h1  = t('ui.listing', model: model_name)
   = render '/shared/error_explanation'
   = render '/rows/list', resources: resources
 - else
-  h1 = t('ui.empty_list', model: model_name,
-	default: 'List %{model} is empty')
+  h1 = t('ui.empty_list', model: model_name)
 
-= link_to t('ui.create', default: 'Create'),
-	url_for(action: :new), class: 'button rows-new'
+= link_to t('ui.create'), url_for(action: :new), class: 'button rows-new'
