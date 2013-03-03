@@ -16,4 +16,9 @@ describe RowsController do
   specify { should respond_to(:create) }
   specify { should respond_to(:update) }
   specify { should respond_to(:destroy) }
+
+  it 'coverage resource_format' do
+    subject.send(:resource_format, 'abc').should == 'abc'
+  end
+
 end

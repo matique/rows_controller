@@ -49,6 +49,25 @@ describe OrdersController, ':' do
     subject.send(:model_symbol).should == 'order'
     subject.send(:model_symbol_plural).should == 'orders'
   end
+
+  it 'should update' do
+    put :update, { id: order.id }
+    response.should be_true
+    response.should redirect_to(action: :edit)
+  end
+
+  it 'should not update' do
+    put :update, { id: order.id, order: {name: 'error'} }
+    response.should be_success
+    response.should render_template('rows/edit')
+  end
+
+  it 'should not create' do
+    post :create, { id: order.id, order: {name: 'error'} }
+    response.should be_success
+    response.should render_template('rows/new')
+  end
+
 end
 
 
