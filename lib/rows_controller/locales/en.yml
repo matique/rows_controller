@@ -26,8 +26,8 @@ en:
   button:
     back: 'Back'
     edit: 'Edit'
-    delete: 'Delete'
-    show: 'Show'
+    delete: 'xDelete'
+    show: 'xShow'
 
   header:
 #    to_s: 'Test'

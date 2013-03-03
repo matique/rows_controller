@@ -26,7 +26,7 @@ de:
   button:
     back: 'Back'
     edit: 'Edit'
-    delete: 'Delete'
+    delete: 'Löschen'
     show: 'DShow'
 
   header:
