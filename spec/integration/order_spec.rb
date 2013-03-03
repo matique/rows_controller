@@ -13,8 +13,7 @@ describe "Order" do
     fill_in "Name",    :with => "a name"
     click_button "Create"
     page.should have_content("Order created.")
-    page.should have_content("Listing Order")
-#    page.should have_content("Edit Order")
+    page.should have_content("Edit Order")
 
     Order.all.first.name.should == "a name"
   end

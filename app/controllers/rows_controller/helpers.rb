@@ -27,6 +27,10 @@ class RowsController < ApplicationController
     redirect_to action: :index
   end
 
+  def redirect_to_commit
+    redirect_to action: :edit, id: resource.id
+  end
+
   
  protected
   DATE_FORMAT = '%d.%m.%Y'
