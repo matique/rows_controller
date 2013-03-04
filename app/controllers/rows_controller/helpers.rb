@@ -33,6 +33,7 @@ class RowsController < ApplicationController
 
   
  protected
+  # should use I18n.l
   DATE_FORMAT = '%d.%m.%Y'
 
   helper_method :resource, :resources, :columns,
@@ -107,7 +108,6 @@ class RowsController < ApplicationController
     return x.call                   if x.class == Proc
     return '---'.html_safe          if x.empty?
     str = x.to_s
-##    str = UTF8FY.iconv(x.to_s)  if APPLICATION_OPTIONS[:customization] == :dk
     return str.gsub(/\r*\n/, '<br/>')
   end
 
