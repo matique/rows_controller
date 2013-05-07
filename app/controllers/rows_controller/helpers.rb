@@ -32,7 +32,7 @@ class RowsController < ApplicationController
   end
 
   
- protected
+ public
   # should use I18n.l
   DATE_FORMAT = '%d.%m.%Y'
 
