@@ -1,4 +1,6 @@
--# never call this file just 'flash' ==> empties flash
+/ # Show complete flash
+/ # flash[:notice] are faded out after 5 seconds
+/ # never call this file just 'flash' ==> empties flash
 
 - (flash || {}).each do |key, value|
   p class="flash_#{key}" = sanitize(value)

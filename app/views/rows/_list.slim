@@ -1,22 +1,24 @@
 ruby:
- # Requires resources model_class columns
+  # Requires resources model_class columns
 
   cnt = 0
 
 table.rows-list
  tr
-  - columns.each do |column|
-   th = t("header.#{column}")
-
- - resources.each do |resource|
-  - url = "/#{controller_name}/#{resource.id}"
-  - cnt += 1
-  tr id="row_#{resource.id}" class="#{%w{odd even}.at(cnt % 2)}"
+  thead
    - columns.each do |column|
-    td = resource_format(resource.send(column))
-   td
-    = link_to t('button.show'),   url
-    = link_to t('button.edit'),   url + '/edit'
-    = link_to t('button.delete'), url,
-       remote: true,
-       confirm: 'Are you sure?', method: :delete
+    th = t("header.#{column}")
+
+  tbody
+  - resources.each do |resource|
+   - url = "/#{controller_name}/#{resource.id}"
+   - cnt += 1
+   tr id="row_#{resource.id}" class="#{%w{odd even}.at(cnt % 2)}"
+    - columns.each do |column|
+     td = resource_format(resource.send(column))
+    td
+     = link_to t('button.show'),   url
+     = link_to t('button.edit'),   url + '/edit'
+     = link_to t('button.delete'), url,
+	remote: true,
+	data: { confirm: 'Are you sure?' }, method: :delete

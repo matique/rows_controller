@@ -1,77 +1,71 @@
 class RowsController < ApplicationController
+  helper_method :resource, :resources, :columns, :resource_format
+  helper_method :model_class, :model_name, :model_symbol, :model_symbol_plural
 
-  def self.model_class(model_class = nil)
-    @model_class = model_class  unless model_class.nil?
-    @model_class
+# resources/@rows
+  def resources
+    @rows
   end
 
+  def resources=(value)
+    instance_variable_set("@#{model_symbol_plural}", value)
+    @rows = value
+  end
 
- private
+  def resource
+    @row
+  end
+
+  def resource=(value)
+    instance_variable_set("@#{model_symbol}", value)
+    @row = value
+  end
+
+  def columns
+    return model_class.column_headers  if model_class.respond_to?(:column_headers)
+    return ['to_s']  unless model_class.respond_to?(:content_columns)
+    ['id'] + model_class.content_columns.collect{|c| c.name }
+  end
+
+# low level resource methods
+# can be monkey patched
   def resource_new
-    resource = model_class.new(params[model_symbol])
+    if params[model_symbol]
+      self.resource = model_class.new(resource_params)
+    else
+      self.resource = model_class.new
+    end
   end
 
   def resource_create
+    resource_new
     resource.save
   end
 
   def resource_update
-    resource.save
+    if Rails.version.to_i < 4
+      resource.update_attributes(resource_params)
+    else
+      resource.update(resource_params)
+    end
   end
 
   def resource_destroy
     resource.destroy
   end
 
+
+# redirections
+# can be monkey patched
   def redirect_to_index
-    redirect_to action: :index
+    redirect_to action: 'index'
   end
 
-  def redirect_to_edit
-    redirect_to action: :edit, id: resource.id
-  end
 
-  
- public
-  # should use I18n.l
-  DATE_FORMAT = '%d.%m.%Y'
-
-  helper_method :resource, :resources, :columns,
-    :model_class, :model_name, :model_symbol, :model_symbol_plural,
-    :resource_format
-
-  def resource
-    return @_resource  if @_resource
-
-    self.resource = begin
-      name = model_symbol
-      if id = params["#{name}_id"] || params[:id]
-	model_class.find_by_id(id).tap do |r|
-	  r.attributes = params[name] unless request.get?
-	end
-      else
-	model_class.new(params[name])
-      end
-    end
-  end
-
-  def resource=(value)
-    @_resource = value
-    @row = value
-    instance_variable_set("@#{model_symbol}", value)
-    value
-  end
-
-  def resources
-    return @_resources  if @_resources
-    self.resources = model_class.all
-  end
-
-  def resources=(value)
-    @_resources = value
-    @rows = value
-    instance_variable_set("@#{model_symbol_plural}", value)
-    value
+# dynamic model related methods
+  def self.model_class(model_class = nil)
+    @model_class = model_class  unless model_class.nil?
+    @model_class
   end
 
   def model_class
@@ -91,14 +85,12 @@ class RowsController < ApplicationController
     @_model_symbol_plural ||= model_name.pluralize.underscore
   end
 
-  def columns
-    return model_class.column_headers  if model_class.respond_to?(:column_headers)
-    return ['to_s']  unless model_class.respond_to?(:content_columns)
-    ['id'] + model_class.content_columns.collect{|c| c.name }
-  end
+# formatting
+# should use I18n.l
+  DATE_FORMAT = '%d.%m.%Y'
 
   def resource_format(x)
-    x = ''.html_safe  if x.nil?
+    return '--'.html_safe  if x.nil?
     bool = x.class == Time || x.class == Date || x.class == DateTime ||
 	   x.class == ActiveSupport::TimeWithZone
     return x.strftime(DATE_FORMAT).html_safe  if bool

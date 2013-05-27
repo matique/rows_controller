@@ -13,13 +13,13 @@ en:
 
   ui:
     created: '%{model} created.'
-    deleted: '%{model} deleted.'
+    destroy: '%{model} deleted.'
+    edit:    'Editing %{model}'
     empty_list: 'List %{model} is empty'
     listing: 'Listing %{model}'
-    new: 'New %{model}'
-    show: 'Show %{model}'
+    new:     'New %{model}'
+    show:    'Showing %{model}'
     updated: '%{model} updated.'
-    edit: 'Edit %{model}'
 
     create: 'Create'
     update: 'Update'

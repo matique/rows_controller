@@ -1,71 +1,75 @@
 class RowsController < ApplicationController
   require_dependency 'rows_controller/helpers'
 
-  respond_to :html, :xml, :json
+#  before_action :set_resource, only: [:show, :edit, :update, :destroy]
+  before_filter :set_resource, only: [:show, :edit, :update, :destroy]
 
+  # GET /:resources[.json]
   def index
-    respond_with(resources)
+    self.resources = model_class.all
   end
 
+  # GET /:resource/1[.json]
   def show
-    respond_with(resource)
   end
 
+  # GET /:resource/new
   def new
     resource_new
-    respond_with(resource)
   end
 
+  # GET /:resource/1/edit
   def edit
-    respond_with(resource)
   end
 
+  # POST /:resources.json
   def create
-#    merge_bag
-    resource = model_class.new(params[model_symbol])
-    if resource_create
-      flash[:notice] = t('ui.created', model: model_name,
-	      default: "%{model} created.")
-      respond_with(resource) do |format|
-	format.html { redirect_to_edit }
-	format.xml  { render xml: resource, status: :created, location: self.model }
-	format.json { head :no_content }
-      end
-    else
-      respond_with(resource) do |format|
-	format.html { render template: 'rows/new' }
-	format.xml  { render xml: resource.errors, status: :unprocessable_entity }
+    respond_to do |format|
+      if resource_create
+	flash[:notice] = t('ui.created', model: model_name,
+		      default: "%{model} created.")
+	format.html {
+	  if params[:commit] == 'OK'
+	    redirect_to_index
+	  else
+	    redirect_to action: 'edit', id: resource.id
+	  end
+	}
+	format.json { render action: 'show', status: :created, location: resource }
+      else
+        format.html { render action: 'new' }
 	format.json { render json: resource.errors, status: :unprocessable_entity }
       end
     end
   end
 
+  # PATCH/PUT /:resources/1[.json]
   def update
-#    merge_bag
-    if resource_update
-      flash[:notice] = t('ui.updated', model: model_name,
-	    default: "%{model} updated.")
-      respond_with(resource) do |format|
-	format.html { redirect_to_edit }
-	format.xml  { head :ok }
-	format.json { head :no_content }
-      end
-    else
-      respond_with(resource) do |format|
-	format.html { render template: 'rows/edit' }
-	format.xml  { render xml: resource.errors, status: :unprocessable_entity }
+    respond_to do |format|
+      if resource_update
+	flash[:notice] = t('ui.updated', model: model_name,
+		      default: "%{model} updated.")
+	format.html {
+	  if params[:commit] == 'OK'
+	    redirect_to_index
+	  else
+	    redirect_to action: 'edit'
+	  end
+	}
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
 	format.json { render json: resource.errors, status: :unprocessable_entity }
       end
     end
   end
 
+  # DELETE /:resources/1[.json]
   def destroy
     resource_destroy
-    respond_with(resource) do |format|
-      format.html {
-	flash[:notice] = t('ui.deleted', model: model_name)
-	redirect_to_index
-      }
+    flash[:notice] = t('ui.destroy', model: model_name)
+    respond_to do |format|
+      format.html { redirect_to_index }
       format.js   { render template: 'rows/destroy' }
       format.json { head :no_content }
     end
@@ -73,10 +77,23 @@ class RowsController < ApplicationController
 
 
  private
+  # Use callbacks to share common setup or constraints between actions.
+  def set_resource
+    self.resource = model_class.find(params[:id].to_i)
+  end
 
-# May be useful:
-#  def merge_bag
-#    self.params = model_class.merge({}, self.params) if model_class.respond_to?(:merge)
-#  end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def resource_params
+    permits = columns - ['id', 'created_at', 'updated_at']
+    if Rails.version.to_i < 4
+      pars = params[model_symbol] || {}
+      pars.keys.each { |x|
+	pars.delete(x)  unless permits.include?(x)
+      }
+      pars
+    else
+      params.require(model_symbol).permit(permits)
+    end
+  end
 
 end

@@ -6,11 +6,12 @@ ruby:
  content_for(:submit_left) {
 	link_to t('button.back'), "/#{controller_name}", class: 'button' }
 
-= render '/shared/error_explanation'
+= render '/shared/show_flash'
 
 fieldset class="wide mask" id=model_symbol
   legend = t('ui.edit', model: model_name)
+  = render '/shared/error_explanation'
 
   = form_for resource do |f|
     = render 'form', f: f
-    = render '/rows/submit', right: ['update']
+    = render '/rows/submit', right: ['update', 'OK']
