@@ -11,7 +11,7 @@ ruby:
 = render '/shared/show_flash'
 
 fieldset.show class="wide mask" id=model_symbol
-  legend = t('ui.show', model: model_name)
+  legend = t('ui.showing', model: model_name)
   = render '/shared/error_explanation'
 
   = form_for resource do |f|

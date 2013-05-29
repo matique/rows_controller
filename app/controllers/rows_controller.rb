@@ -76,7 +76,7 @@ class RowsController < ApplicationController
   # DELETE /:resources/1[.json]
   def destroy
     resource_destroy
-    flash[:notice] = t('ui.destroy', model: model_name)
+    flash[:notice] = t('ui.destroyed', model: model_name)
     respond_to do |format|
       format.html { redirect_to_index }
       format.js   { render template: 'rows/destroy' }

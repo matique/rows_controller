@@ -9,7 +9,7 @@ ruby:
 = render '/shared/show_flash'
 
 fieldset class="wide mask" id=model_symbol
-  legend = t('ui.edit', model: model_name)
+  legend = t('ui.editing', model: model_name)
   = render '/shared/error_explanation'
 
   = form_for resource do |f|
