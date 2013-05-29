@@ -1,8 +1,17 @@
+if Rails.version.to_i == 4
+  RAILS3 = false
+  RAILS4 = true
+else
+  RAILS3 = true
+  RAILS4 = false
+end
+
+
 class RowsController < ApplicationController
   require_dependency 'rows_controller/helpers'
 
-#  before_action :set_resource, only: [:show, :edit, :update, :destroy]
-  before_filter :set_resource, only: [:show, :edit, :update, :destroy]
+  before_action :set_resource, only: [:show, :edit, :update, :destroy] if RAILS4
+  before_filter :set_resource, only: [:show, :edit, :update, :destroy] if RAILS3
 
   # GET /:resources[.json]
   def index
@@ -84,8 +93,8 @@ class RowsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def resource_params
-    permits = columns - ['id', 'created_at', 'updated_at']
-    if Rails.version.to_i < 4
+    permits = resource_whitelist
+    unless RAILS4
       pars = params[model_symbol] || {}
       pars.keys.each { |x|
 	pars.delete(x)  unless permits.include?(x)

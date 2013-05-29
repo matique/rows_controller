@@ -1,5 +1,5 @@
 class RowsController < ApplicationController
-  helper_method :resource, :resources, :columns, :resource_format
+  helper_method :resource, :resources, :resource_columns, :resource_format
   helper_method :model_class, :model_name, :model_symbol, :model_symbol_plural
 
 # resources/@rows
@@ -21,12 +21,19 @@ class RowsController < ApplicationController
     @row = value
   end
 
-  def columns
+  def resource_columns
     return model_class.column_headers  if model_class.respond_to?(:column_headers)
     return ['to_s']  unless model_class.respond_to?(:content_columns)
     ['id'] + model_class.content_columns.collect{|c| c.name }
   end
 
+ private
+  def resource_whitelist
+    raise "RowsController: requires private method 'resource_whitelist' in your controller"
+  end
+
+
+ public
 # low level resource methods
 # can be monkey patched
   def resource_new
@@ -43,7 +50,7 @@ class RowsController < ApplicationController
   end
 
   def resource_update
-    if Rails.version.to_i < 4
+    unless RAILS4
       resource.update_attributes(resource_params)
     else
       resource.update(resource_params)
@@ -86,14 +93,12 @@ class RowsController < ApplicationController
   end
 
 # formatting
-# should use I18n.l
-  DATE_FORMAT = '%d.%m.%Y'
-
   def resource_format(x)
     return '--'.html_safe  if x.nil?
     bool = x.class == Time || x.class == Date || x.class == DateTime ||
 	   x.class == ActiveSupport::TimeWithZone
-    return x.strftime(DATE_FORMAT).html_safe  if bool
+#    return x.strftime(DATE_FORMAT).html_safe  if bool
+    return x.strftime('%d.%m.%Y').html_safe  if bool
     return x.to_s.html_safe         if x.class == Fixnum
     return 'X'.html_safe            if x.class == TrueClass
     return '&ensp;'.html_safe       if x.class == FalseClass

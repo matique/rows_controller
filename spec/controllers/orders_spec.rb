@@ -56,6 +56,12 @@ describe OrdersController, ':' do
     response.should redirect_to(action: :edit)
   end
 
+  it 'should update #2' do
+    put :update, { id: order.id, commit: 'OK' }
+    response.should be_true
+    response.should redirect_to(action: :index)
+  end
+
   it 'should not update' do
     put :update, { id: order.id, order: {name: 'error'} }
     response.should be_success
