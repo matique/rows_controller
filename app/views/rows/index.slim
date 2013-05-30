@@ -1,8 +1,6 @@
 - # Template for RowsController (index)
 - # Requires resources model_name resource_columns
 
-= render '/shared/show_flash'
-
 - if resources.length > 0
   h1  = t('ui.listing', model: model_name)
   = render '/shared/error_explanation'

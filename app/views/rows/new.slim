@@ -6,8 +6,6 @@ ruby:
   content_for(:submit_left) {
 	link_to t('button.back'), "/#{controller_name}", class: 'button' }
 
-= render '/shared/show_flash'
-
 fieldset.wide class="mask" id=model_symbol
   legend = t('ui.new', model: model_name)
   = render '/shared/error_explanation'

@@ -29,7 +29,7 @@ class RowsController < ApplicationController
 
  private
   def resource_whitelist
-    raise "RowsController requires private method 'resource_whitelist' in your controller"
+    raise "RowsController requires private method 'resource_whitelist' in controller <#{params[:controller]}>"
   end
 
 

@@ -8,8 +8,6 @@ ruby:
   content_for(:submit_right) {
 	link_to t('button.edit'), url_for(action: :edit), class: 'button' }
 
-= render '/shared/show_flash'
-
 fieldset.show class="wide mask" id=model_symbol
   legend = t('ui.showing', model: model_name)
   = render '/shared/error_explanation'
