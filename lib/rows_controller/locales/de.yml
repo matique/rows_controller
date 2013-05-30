@@ -2,19 +2,20 @@
 de:
 
   ui:
-    created: '%{model} created.'
-    deleted: '%{model} deleted.'
-    empty_list: 'List %{model} is empty'
-    listing: 'Listing %{model}'
-    new: 'New %{model}'
-    show: 'Show %{model}'
-    updated: '%{model} updated.'
+    created:   '%{model} erstellt.'
+    destroyed: '%{model} geloescht.'
+    updated:   '%{model} geaendert.'
 
-    create: 'Create'
-    update: 'Update'
+    editing:   'Editiere %{model}'
+    listing:   'Liste %{model}'
+    new:       'Neu %{model}'
+    showing:   'Zeige %{model}'
+
+    empty_list: 'Liste %{model} is leer.'
 
   button:
-    back: 'Zurueck'
-    edit: 'Aendern'
-    delete: 'Löschen'
-    show: 'Anzeige'
+    back:      'Zurueck'
+    create:    'Neu'
+    delete:    'Loesche'
+    edit:      'Edititeren'
+    show:      'Zeige'

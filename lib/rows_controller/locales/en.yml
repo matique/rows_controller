@@ -12,13 +12,9 @@ en:
 
     empty_list: 'List %{model} is empty'
 
-    create:    'Create'
-    update:    'Update'
-
   button:
     back:      'Back'
-    create:    'Create'
+    create:    'New'
     delete:    'Delete'
     edit:      'Edit'
     show:      'Show'
-    update:    'Update'
