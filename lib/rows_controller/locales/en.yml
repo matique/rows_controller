@@ -14,7 +14,7 @@ en:
 
   button:
     back:      'Back'
-    create:    'New'
+    create:    'Create'
     delete:    'Delete'
     edit:      'Edit'
     show:      'Show'
