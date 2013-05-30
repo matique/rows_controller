@@ -19,7 +19,7 @@ methods (index, show, edit,...).
 The methods may be redefined in OrdersController overwritting the
 methods from RowsController.
 
-Protected low level methods like 'resources' may be redefined as well.
+Low level methods like 'resources' may be redefined as well.
 An example:
 
     def resources
@@ -34,7 +34,7 @@ Customization of views
 ----------------------
 
 Providing e.g. an "#{Rails.root}/app/views/order/index.html.erb"
-overwrites the default view as Rails will first look
+overwrites the default Rows view as Rails will first look
 into the directory "#{Rails.root}/app/views" before looking
 into the RowsController.
 
@@ -49,6 +49,16 @@ be changed by e.g.:
       model_class Booking
 
 The model class can be retrieved with model_class.
+
+
+Rails 4
+-------
+
+Rails 4 introduced strong parameters.
+To support them a private method 'resource_whitelist' is required
+in the controllers.
+Alternatively you may define a private method 'resource_params'
+in the controller to filter params.
 
 
 ## Enhancements
