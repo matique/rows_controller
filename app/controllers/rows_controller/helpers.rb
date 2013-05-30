@@ -1,24 +1,27 @@
 class RowsController < ApplicationController
+  helper_method :set_resource, :set_resources
   helper_method :resource, :resources, :resource_columns, :resource_format
   helper_method :model_class, :model_name, :model_symbol, :model_symbol_plural
 
 # resources/@rows
-  def resources
-    @rows
+  def set_resources(rows = nil)
+    rows ||= model_class.all
+    instance_variable_set("@#{model_symbol_plural}", rows)
+    @rows = rows
   end
 
-  def resources=(value)
-    instance_variable_set("@#{model_symbol_plural}", value)
-    @rows = value
+  def set_resource(row = nil)
+    row ||= model_class.find(params[:id].to_i)
+    instance_variable_set("@#{model_symbol}", row)
+    @row = row
+  end
+
+  def resources
+    @rows || set_resources
   end
 
   def resource
-    @row
-  end
-
-  def resource=(value)
-    instance_variable_set("@#{model_symbol}", value)
-    @row = value
+    @row || set_resource
   end
 
   def resource_columns
@@ -38,9 +41,9 @@ class RowsController < ApplicationController
 # can be monkey patched
   def resource_new
     if params[model_symbol]
-      self.resource = model_class.new(resource_params)
+      set_resource model_class.new(resource_params)
     else
-      self.resource = model_class.new
+      set_resource model_class.new
     end
   end
 

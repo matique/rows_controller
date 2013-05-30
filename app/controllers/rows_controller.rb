@@ -1,25 +1,17 @@
-if Rails.version.to_i == 4
-  RAILS3 = false
-  RAILS4 = true
-else
-  RAILS3 = true
-  RAILS4 = false
-end
+RAILS4 = Rails.version.to_i == 4
 
 
 class RowsController < ApplicationController
   require_dependency 'rows_controller/helpers'
 
-  before_action :set_resource, only: [:show, :edit, :update, :destroy] if RAILS4
-  before_filter :set_resource, only: [:show, :edit, :update, :destroy] if RAILS3
-
   # GET /:resources[.json]
   def index
-    self.resources = model_class.all
+    set_resources
   end
 
   # GET /:resource/1[.json]
   def show
+    set_resource
   end
 
   # GET /:resource/new
@@ -29,6 +21,7 @@ class RowsController < ApplicationController
 
   # GET /:resource/1/edit
   def edit
+    set_resource
   end
 
   # POST /:resources.json
@@ -54,6 +47,7 @@ class RowsController < ApplicationController
 
   # PATCH/PUT /:resources/1[.json]
   def update
+    set_resource
     respond_to do |format|
       if resource_update
 	flash[:notice] = t('ui.updated', model: model_name,
@@ -75,6 +69,7 @@ class RowsController < ApplicationController
 
   # DELETE /:resources/1[.json]
   def destroy
+    set_resource
     resource_destroy
     flash[:notice] = t('ui.destroyed', model: model_name)  unless request.xhr?
     respond_to do |format|
@@ -86,11 +81,6 @@ class RowsController < ApplicationController
 
 
  private
-  # Use callbacks to share common setup or constraints between actions.
-  def set_resource
-    self.resource = model_class.find(params[:id].to_i)
-  end
-
   # Never trust parameters from the scary internet, only allow the white list through.
   def resource_params
     permits = resource_whitelist

@@ -3,7 +3,6 @@
 
 - if resources.length > 0
   h1  = t('ui.listing', model: model_name)
-  = render '/shared/error_explanation'
   = render '/rows/list', resources: resources, columns: resource_columns
 - else
   h1 = t('ui.empty_list', model: model_name)
