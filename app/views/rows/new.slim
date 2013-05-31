@@ -10,6 +10,7 @@ fieldset.wide class="mask" id=model_symbol
   legend = t('ui.new', model: model_name)
   = render '/shared/error_explanation'
 
-  = form_for resource do |f|
+  - @multipart ||= false
+  = form_for resource, html: {multipart: @multipart} do |f|
     = render 'form', f: f
     = render '/rows/submit', right: ['create', 'OK']
