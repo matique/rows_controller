@@ -74,7 +74,7 @@ class RowsController < ApplicationController
     flash[:notice] = t('ui.destroyed', model: model_name)  unless request.xhr?
     respond_to do |format|
       format.html { redirect_to_index }
-      format.js   { render template: 'rows/destroy' }
+      format.js   { render template: 'rows/destroy', layout: false }
       format.json { head :no_content }
     end
   end
