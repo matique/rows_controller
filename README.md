@@ -54,6 +54,9 @@ The model class can be retrieved with model_class.
 Rails 4
 -------
 
+This gem is intended for Rails 4.
+For older Rails versions feel free to switch to "gem 'rows_controller', '0.4.4'".
+
 Rails 4 introduced strong parameters.
 To support them a private method 'resource_whitelist' is required
 in the controllers.

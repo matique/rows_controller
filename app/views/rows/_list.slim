@@ -1,5 +1,6 @@
 ruby:
   # Requires resources columns
+  # Column :multi_selection generates a check_box
 
   cnt = 0
 
@@ -7,7 +8,7 @@ table.rows-list
  thead
   tr
    - columns.each do |column|
-    th = t("header.#{column}")
+    th = column == :multi_selection ? '' : t("header.#{column}")
 
  tbody
   - resources.each do |resource|
@@ -15,6 +16,8 @@ table.rows-list
    - cnt += 1
    tr id="row_#{resource.id}" class="#{%w{odd even}.at(cnt % 2)}"
     - columns.each do |column|
-     td = resource_format(resource.send(column))
+     td = column == :multi_selection ?                  \
+      check_box_tag('multi_selection[]', resource.id)  : \
+      resource_format(resource.send(column))
     td
      = render 'buttons', url: url

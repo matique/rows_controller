@@ -29,18 +29,26 @@ describe "Order" do
     Order.all.length.should == (n - 1)
   end
 
-#  it 'should be copied' do
-#    order = Order.create :name => 'name', :qty => '123'
-#    n = Order.all.length
-#    visit "/orders/#{order.id}/copy"
-#    page.should have_content("New")
-#    fill_in "Name",    :with => "a name"
-#    click_button "Create"
-#
-#    Order.all.length.should == (n + 1)
-#    order2 = Order.find(order.id + 1)
-#    order2.name.should_not == order.name
-#    order2.qty.should == order.qty
-#  end
+  it 'index should have check_box for multi_selection' do
+    Order.create :name => 'name', :qty => 123
+    visit "/orders"
+    page.should have_css('table tr input[name="multi_selection[]"]')
+  end
+
+  it 'should be copied' do
+    Order.create :name => 'name', :qty => 123
+    order = Order.all.first
+    n = Order.all.length
+    visit "/orders/#{order.id}/copy"
+
+    page.should have_content("New")
+    fill_in "Name",    :with => "a name"
+    click_button "OK"
+
+    Order.all.length.should == (n + 1)
+    order2 = Order.find(order.id + 1)
+    order2.name.should_not == order.name
+    order2.qty.should == order.qty
+  end
 
 end

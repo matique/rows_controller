@@ -84,14 +84,14 @@ class RowsController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def resource_params
     permits = resource_whitelist
-    unless RAILS4
+    if RAILS4
+      params.require(model_symbol).permit(permits)
+    else
       pars = params[model_symbol] || {}
       pars.keys.each { |x|
 	pars.delete(x)  unless permits.include?(x)
       }
       pars
-    else
-      params.require(model_symbol).permit(permits)
     end
   end
 
