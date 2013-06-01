@@ -38,7 +38,7 @@ overwrites the default Rows view as Rails will first look
 into the directory "#{Rails.root}/app/views" before looking
 into the RowsController.
 
-Similarly, partials '_row_buttons' and '_list_bottom' may be overwritten
+Similarly, partials '_row_buttons' and '_list_footer' may be overwritten
 as well.
 
 
