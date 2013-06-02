@@ -1,0 +1,7 @@
+/ Default list header.
+/ Requires columns.
+/ May be overwriten for e.g. pagination and/or sortung.
+
+- columns.each do |column|
+  th = column == :multi_selection ? '' : t("header.#{column}")
+

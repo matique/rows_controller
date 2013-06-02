@@ -7,8 +7,7 @@ ruby:
 table.rows-list
  thead
   tr
-   - columns.each do |column|
-    th = column == :multi_selection ? '' : t("header.#{column}")
+   = render 'list_header', columns: columns
 
  tbody
   - resources.each do |resource|
