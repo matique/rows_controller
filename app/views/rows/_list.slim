@@ -14,9 +14,6 @@ table.rows-list
    - url = url_for resource
    - cnt += 1
    tr id="row_#{resource.id}" class="#{%w{odd even}.at(cnt % 2)}"
-    - columns.each do |column|
-     td = column == :multi_selection ?                  \
-      check_box_tag('multi_selection[]', resource.id)  : \
-      resource_format(resource.send(column))
+    = render 'list_row', resource: resource, columns: columns
     td
      = render 'row_buttons', url: url
