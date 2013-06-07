@@ -1,6 +1,11 @@
 ruby:
   # Fills the last column of the list with "buttons".
-  # Requires url
+  # Requires row current_controller (supplied by Rails)
+  if defined?(current_controller)
+    url = "/#{current_controller}/#{row.id}"
+  else
+    url = url_for row
+  end
 
 = link_to t('button.show'),   url
 = link_to t('button.edit'),   url + '/edit'

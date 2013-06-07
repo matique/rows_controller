@@ -11,9 +11,8 @@ table.rows-list
 
  tbody
   - resources.each do |resource|
-   - url = url_for resource
    - cnt += 1
    tr id="row_#{resource.id}" class="#{%w{odd even}.at(cnt % 2)}"
     = render 'list_row', resource: resource, columns: columns
     td
-     = render 'row_buttons', url: url
+     = render 'row_buttons', row: resource
