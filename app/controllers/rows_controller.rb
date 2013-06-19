@@ -89,7 +89,10 @@ class RowsController < ApplicationController
     else
       pars = params[model_symbol] || {}
       pars.keys.each { |x|
-	pars.delete(x)  unless permits.include?(x)
+	unless permits.include?(x)
+	  pars.delete(x)
+	  p "** WARNING: model <#{model_name}> dropping params <#{x}>"
+	end
       }
       pars
     end

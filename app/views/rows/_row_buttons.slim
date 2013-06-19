@@ -7,8 +7,8 @@ ruby:
     url = url_for row
   end
 
-= link_to t('button.show'),   url
-= link_to t('button.edit'),   url + '/edit'
-= link_to t('button.delete'), url,
+= link_to t('button.show').html_safe,   url
+= link_to t('button.edit').html_safe,   url + '/edit'
+= link_to t('button.delete').html_safe, url,
    remote: true,
    data: { confirm: 'Are you sure?' }, method: :delete

@@ -4,9 +4,9 @@ ruby:
  #   partial 'form' template
 
   content_for(:submit_left) {
-	link_to t('button.back'), url_for(action: :index), class: 'button' }
+	link_to t('button.back').html_safe, url_for(action: :index), class: 'button' }
   content_for(:submit_right) {
-	link_to t('button.edit'), url_for(action: :edit), class: 'button' }
+	link_to t('button.edit').html_safe, url_for(action: :edit), class: 'button' }
 
 fieldset.show class="wide mask" id=model_symbol
   legend = t('ui.showing', model: model_name)

@@ -2,4 +2,4 @@
 / May be overwriten for e.g. pagination
 
 div.list-footer
-  = link_to t('button.create'), url_for(action: :new), class: 'button'
+  = link_to t('button.create').html_safe, url_for(action: :new), class: 'button'

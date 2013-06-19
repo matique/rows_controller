@@ -8,11 +8,11 @@ class RowsExtController < RowsController
     end
   end
 
-#  def multi_deletion
-#    items = params[:multi_selection] || []
-#    items -= ['']
-#    items.map {|id|  model_class.find(id).destroy }
-#    redirect_to :action => :index
-#  end
+  def multi_deletion
+    items = params[:multi_tick] || []
+    items -= ['']
+    items.map { |id|  model_class.find_by_id(id.to_i).destroy }
+    redirect_to :action => :index
+  end
 
 end

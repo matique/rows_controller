@@ -3,8 +3,8 @@ de:
 
   ui:
     created:   '%{model} erstellt.'
-    destroyed: '%{model} geloescht.'
-    updated:   '%{model} geaendert.'
+    destroyed: '%{model} gel&ouml;scht.'
+    updated:   '%{model} ge&auml;ndert.'
 
     editing:   'Editiere %{model}'
     listing:   'Liste %{model}'
@@ -14,8 +14,10 @@ de:
     empty_list: 'Liste %{model} is leer.'
 
   button:
-    back:      'Zurueck'
+    back:      "Zur&uuml;ck"
     create:    'Neu'
-    delete:    'Loesche'
+    update:    'Speichern'
+    delete:    'L&ouml;sche'
     edit:      'Edititeren'
     show:      'Zeige'
+    clone:     'Klonen'

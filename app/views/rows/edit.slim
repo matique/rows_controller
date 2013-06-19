@@ -4,13 +4,14 @@ ruby:
  #   partial 'form' template
 
  content_for(:submit_left) {
-	link_to t('button.back'), "/#{controller_name}", class: 'button' }
+	link_to t('button.back').html_safe, "/#{controller_name}", class: 'button' }
 
 fieldset class="wide mask" id=model_symbol
   legend = t('ui.editing', model: model_name)
   = render '/shared/error_explanation'
 
   - @multipart ||= false
-  = form_for resource, html: {multipart: @multipart} do |f|
+  /"/#{controller_name}/update/#{@row.id}"
+  = form_for resource, url: "/#{controller_name}/#{@row.id}", html: {multipart: @multipart} do |f|
     = render 'form', f: f
     = render '/rows/submit', right: ['update', 'OK']
