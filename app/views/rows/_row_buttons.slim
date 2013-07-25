@@ -1,0 +1,14 @@
+ruby:
+  # Fills the last column of the list with "buttons".
+  # Requires row current_controller (supplied by Rails)
+  if defined?(current_controller)
+    url = "/#{current_controller}/#{row.id}"
+  else
+    url = url_for row
+  end
+
+= link_to t('button.show').html_safe,   url
+= link_to t('button.edit').html_safe,   url + '/edit'
+= link_to t('button.delete').html_safe, url,
+   remote: true,
+   data: { confirm: 'Are you sure?' }, method: :delete

@@ -19,7 +19,7 @@ methods (index, show, edit,...).
 The methods may be redefined in OrdersController overwritting the
 methods from RowsController.
 
-Protected low level methods like 'resources' may be redefined as well.
+Low level methods like 'resources' may be redefined as well.
 An example:
 
     def resources
@@ -34,9 +34,12 @@ Customization of views
 ----------------------
 
 Providing e.g. an "#{Rails.root}/app/views/order/index.html.erb"
-overwrites the default view as Rails will first look
+overwrites the default Rows view as Rails will first look
 into the directory "#{Rails.root}/app/views" before looking
 into the RowsController.
+
+Similarly, partials '_row_buttons' and '_list_footer' may be overwritten
+as well.
 
 
 model_class
@@ -51,11 +54,24 @@ be changed by e.g.:
 The model class can be retrieved with model_class.
 
 
+Rails 4
+-------
+
+This gem is intended for Rails 4.
+For older Rails versions feel free to switch to "gem 'rows_controller', '0.4.4'".
+
+Rails 4 introduced strong parameters.
+To support them a private method 'resource_whitelist' is required
+in the controllers.
+Alternatively you may define a private method 'resource_params'
+in the controller to filter params.
+
+
 ## Enhancements
 
 ### copy
 
-The method "copy" was added to the RowsController.
+The method "copy" was added to the RowsExtController.
 "copy" is like "new", however its attributes are initialized
 from an existing resource.
 The "id" of the cloned resource is set to nil.
@@ -94,4 +110,4 @@ Look for:
 - decent_exposure
 
 
-Copyright (c) 2009-2012 [Dittmar Krall], released under the MIT license
+Copyright (c) 2009-2013 [Dittmar Krall], released under the MIT license

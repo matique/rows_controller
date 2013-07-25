@@ -1,0 +1,18 @@
+ruby:
+  # Requires resources columns
+  # Column :multi_selection generates a check_box
+
+  cnt = 0
+
+table.rows-list
+ thead
+  tr
+   = render 'list_header', columns: columns
+
+ tbody
+  - resources.each do |resource|
+   - cnt += 1
+   tr id="row_#{resource.id}" class="#{%w{odd even}.at(cnt % 2)}"
+    = render 'list_row', resource: resource, columns: columns
+    td
+     = render 'row_buttons', row: resource

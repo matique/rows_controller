@@ -1,0 +1,23 @@
+# under construction; see english version
+de:
+
+  ui:
+    created:   '%{model} erstellt.'
+    destroyed: '%{model} gel&ouml;scht.'
+    updated:   '%{model} ge&auml;ndert.'
+
+    editing:   'Editiere %{model}'
+    listing:   'Liste %{model}'
+    new:       'Neu %{model}'
+    showing:   'Zeige %{model}'
+
+    empty_list: 'Liste %{model} is leer.'
+
+  button:
+    back:      "Zur&uuml;ck"
+    create:    'Erstelle'
+    update:    'Speichern'
+    delete:    'L&ouml;sche'
+    edit:      'Editieren'
+    show:      'Zeige'
+    clone:     'Klonen'

@@ -1,86 +1,100 @@
+RAILS4 = Rails.version.to_i == 4
+
+
 class RowsController < ApplicationController
   require_dependency 'rows_controller/helpers'
 
-  respond_to :html, :xml, :json
-
+  # GET /:resources[.json]
   def index
-    respond_with(resources)
+    set_resources
   end
 
+  # GET /:resource/1[.json]
   def show
-    respond_with(resource)
+    set_resource
   end
 
+  # GET /:resource/new
   def new
-    respond_with(resource)
+    resource_new
   end
 
+  # GET /:resource/1/edit
   def edit
-    respond_with(resource)
+    set_resource
   end
 
+  # POST /:resources.json
   def create
-#    merge_bag
-    msg = t('ui.created', :model => model_name,
-	    :default => "%{model} created.")
-    save_and_respond(msg, 'rows/new')
-  end
-
-  def update
-#    merge_bag
-    msg = t('ui.updated', :model => model_name,
-	    :default => "%{model} updated.")
-    save_and_respond(msg, 'rows/edit')
-  end
-
-  def destroy
-    resource.destroy
-    respond_with(resource) do |format|
-      format.html { redirect_to :action => :index }
-      format.js   { render :template => 'rows/destroy' }
-      format.json { head :no_content }
+    respond_to do |format|
+      if resource_create
+	flash[:notice] = t('ui.created', model: model_name,
+		      default: "%{model} created.").html_safe
+	format.html {
+	  if params[:commit] == 'OK'
+	    redirect_to_index
+	  else
+	    redirect_to action: 'edit', id: resource.id
+	  end
+	}
+	format.json { render action: 'show', status: :created, location: resource }
+      else
+        format.html { render action: 'new' }
+	format.json { render json: resource.errors, status: :unprocessable_entity }
+      end
     end
-    flash[:notice] = t('ui.deleted', :model => model_name,
-		       :default => "%{model} deleted.")
   end
 
-  def copy
-    @_resource = resource.dup
-    @_resource.id = nil
-    respond_with(resource) do |format|
-      format.html { render :action => :new }
+  # PATCH/PUT /:resources/1[.json]
+  def update
+    set_resource
+    respond_to do |format|
+      if resource_update
+	flash[:notice] = t('ui.updated', model: model_name).html_safe
+	format.html {
+	  if params[:commit] == 'OK'
+	    redirect_to_index
+	  else
+	    redirect_to action: 'edit'
+	  end
+	}
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+	format.json { render json: resource.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /:resources/1[.json]
+  def destroy
+    set_resource
+    resource_destroy
+    flash[:notice] = t('ui.destroyed', model: model_name).html_safe  unless request.xhr?
+    respond_to do |format|
+      format.html { redirect_to_index }
+      format.js   { render template: 'rows/destroy', layout: false }
+      format.json { head :no_content }
     end
   end
 
 
  private
-  def save_and_respond(notice, failure_template)
-    if resource.save
-      respond_with(resource) do |format|
-	format.html { redirect_to :action => :edit, :id => resource.id }
-	format.xml  { render :xml => resource.errors, :status => :unprocessable_entity }
-	format.json { head :no_content }
-      end
-      flash[:notice] = notice
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def resource_params
+    permits = resource_whitelist
+    if RAILS4
+      params.require(model_symbol).permit(permits)
     else
-      respond_with(resource) do |format|
-	format.html { render :template => failure_template, :id => resource.id }
-	format.xml  { render xml:  resource.errors, :status => :unprocessable_entity }
-	format.json { render json: resource.errors, :status => :unprocessable_entity }
-      end
+      pars = params[model_symbol] || {}
+      pars.keys.each { |x|
+	unless permits.include?(x)
+	  pars.delete(x)
+	  p "** WARNING: model <#{model_name}> dropping params <#{x}>"
+	end
+      }
+      pars
     end
   end
-
-# May be useful:
-#  def multi_deletion
-#    items = params[:multi_deletion] || []
-#    items -= ['']
-#    items.map {|id|  model_class.find(id).destroy }
-#    redirect_to :action => :index
-#  end
-
-#  def merge_bag
-#    self.params = model_class.merge({}, self.params) if model_class.respond_to?(:merge)
-#  end
 
 end

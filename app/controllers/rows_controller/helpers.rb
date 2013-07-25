@@ -1,48 +1,81 @@
 class RowsController < ApplicationController
+  helper_method :set_resource, :set_resources
+  helper_method :resource, :resources, :resource_columns, :resource_format
+  helper_method :model_class, :model_name, :model_symbol, :model_symbol_plural
 
-  def self.model_class(model_class = nil)
-    @model_class = model_class  unless model_class.nil?
-    @model_class
+# resources/@rows
+  def set_resources(rows = nil)
+    rows ||= model_class.all
+    instance_variable_set("@#{model_symbol_plural}", rows)
+    @rows = rows
   end
 
-  
- protected
-  DATE_FORMAT = '%d.%m.%Y'
-
-  helper_method :resource, :resources, :columns,
-    :model_class, :model_name, :model_symbol, :model_symbol_plural,
-    :resource_format
-
-  def resource
-    return @_resource  if @_resource
-
-    self.resource = begin
-      name = model_symbol
-      if id = params["#{name}_id"] || params[:id]
-	model_class.find_by_id(id).tap do |r|
-	  r.attributes = params[name] unless request.get?
-	end
-      else
-	model_class.new(params[name])
-      end
-    end
-  end
-
-  def resource=(value)
-    @_resource = value
-    instance_variable_set("@#{model_symbol}", value)
-    value
+  def set_resource(row = nil)
+    row ||= model_class.find(params[:id].to_i)
+    instance_variable_set("@#{model_symbol}", row)
+    @row = row
   end
 
   def resources
-    return @_resources  if @_resources
-    self.resources = model_class.all
+    @rows || set_resources
   end
 
-  def resources=(value)
-    @_resources = value
-    instance_variable_set("@#{model_symbol_plural}", value)
-    value
+  def resource
+    @row || set_resource
+  end
+
+  def resource_columns
+    return model_class.column_headers  if model_class.respond_to?(:column_headers)
+    return ['to_s']  unless model_class.respond_to?(:content_columns)
+    ['id'] + model_class.content_columns.collect{|c| c.name }
+  end
+
+ private
+  def resource_whitelist
+    raise "RowsController requires private method 'resource_whitelist' in controller <#{params[:controller]}>"
+  end
+
+
+ public
+# low level resource methods
+# can be monkey patched
+  def resource_new
+    if params[model_symbol]
+      set_resource model_class.new(resource_params)
+    else
+      set_resource model_class.new
+    end
+  end
+
+  def resource_create
+    resource_new
+    resource.save
+  end
+
+  def resource_update
+    unless RAILS4
+      resource.update_attributes(resource_params)
+    else
+      resource.update(resource_params)
+    end
+  end
+
+  def resource_destroy
+    resource.destroy
+  end
+
+
+# redirections
+# can be monkey patched
+  def redirect_to_index
+    redirect_to action: 'index'
+  end
+
+
+# dynamic model related methods
+  def self.model_class(model_class = nil)
+    @model_class = model_class  unless model_class.nil?
+    @model_class
   end
 
   def model_class
@@ -62,24 +95,19 @@ class RowsController < ApplicationController
     @_model_symbol_plural ||= model_name.pluralize.underscore
   end
 
-  def columns
-    return model_class.column_headers  if model_class.respond_to?(:column_headers)
-    return ['to_s']  unless model_class.respond_to?(:content_columns)
-    ['id'] + model_class.content_columns.collect{|c| c.name }
-  end
-
+# formatting
   def resource_format(x)
-    x = ''.html_safe  if x.nil?
+    return '--'.html_safe  if x.nil?
     bool = x.class == Time || x.class == Date || x.class == DateTime ||
 	   x.class == ActiveSupport::TimeWithZone
-    return x.strftime(DATE_FORMAT).html_safe  if bool
+    return x.strftime('%d.%m.%Y').html_safe  if bool
+#    return I18n.l(x)                if bool
     return x.to_s.html_safe         if x.class == Fixnum
     return 'X'.html_safe            if x.class == TrueClass
     return '&ensp;'.html_safe       if x.class == FalseClass
     return x.call                   if x.class == Proc
     return '---'.html_safe          if x.empty?
     str = x.to_s
-##    str = UTF8FY.iconv(x.to_s)  if APPLICATION_OPTIONS[:customization] == :dk
     return str.gsub(/\r*\n/, '<br/>')
   end
 

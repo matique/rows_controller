@@ -31,6 +31,7 @@ describe OrdersController, ':' do
     get :show, :id => order.id
     subject.send(:resource).should == order
     assigns(:order).should == order
+    assigns(:row).should == order
   end
 
   it 'checking resources' do
@@ -38,6 +39,7 @@ describe OrdersController, ':' do
     subject.send(:resources).should be_a_kind_of(Array)
     assigns(:orders).should be_a_kind_of(Array)
     assigns(:orders).should == Order.all
+    assigns(:rows).should == Order.all
   end
 
   it 'checking model_class' do
@@ -47,6 +49,31 @@ describe OrdersController, ':' do
     subject.send(:model_symbol).should == 'order'
     subject.send(:model_symbol_plural).should == 'orders'
   end
+
+  it 'should update' do
+    put :update, { id: order.id }
+    response.should be_true
+    response.should redirect_to(action: :edit)
+  end
+
+  it 'should update #2' do
+    put :update, { id: order.id, commit: 'OK' }
+    response.should be_true
+    response.should redirect_to(action: :index)
+  end
+
+  it 'should not update' do
+    put :update, { id: order.id, order: {name: 'error'} }
+    response.should be_success
+    response.should render_template('rows/edit')
+  end
+
+  it 'should not create' do
+    post :create, { id: order.id, order: {name: 'error'} }
+    response.should be_success
+    response.should render_template('rows/new')
+  end
+
 end
 
 
@@ -57,9 +84,7 @@ end
 describe CategoriesController do
   it 'checking model_class' do
     get :index
-# both not working, Why?
-#    subject.send(:model_class).should be_a(Order)
-#    subject.send(:model_class).should == Order
+    subject.send(:model_class).should == Order
     subject.send(:model_name).should == 'Order'
     subject.send(:model_symbol).should == 'order'
     subject.send(:model_symbol_plural).should == 'orders'

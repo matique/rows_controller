@@ -1,10 +1,11 @@
 class Order < ActiveRecord::Base
 
-  before_save do |row|
-    return true  unless row.name == 'error'
+  before_save :before_save_x
+  def before_save_x
+    return true  unless name == 'error'
 
-    row.errors.add :base, 'panic'
-   return false
+    self.errors.add :base, 'panic'
+    return false
   end
 
 end

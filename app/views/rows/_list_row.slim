@@ -1,0 +1,10 @@
+ruby:
+  # Requires resource columns
+
+- columns.each do |column|
+ td
+  - case column
+  - when :multi_selection
+    = check_box_tag('multi_selection[]', resource.id)
+  - else
+    = resource_format(resource.send(column))

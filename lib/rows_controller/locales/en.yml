@@ -1,33 +1,22 @@
 en:
-  flash:
-    actions:
-      create:
-        notice: "%{resource_name} was successfully created."
-        alert: ""
-      update:
-        notice: "%{resource_name} was successfully updated."
-        alert: ""
-      destroy:
-        notice: "%{resource_name} was successfully destroyed."
-        alert: "%{resource_name} could not be destroyed."
 
   ui:
-    created: '%{model} created.'
-    deleted: '%{model} deleted.'
-    empty_list: 'List %{model} is empty'
-    listing: 'Listing %{model}'
-    new: 'New %{model}'
-    show: 'Show %{model}'
-    updated: '%{model} updated.'
+    created:   '%{model} created.'
+    destroyed: '%{model} deleted.'
+    updated:   '%{model} updated.'
 
-    create: 'Create'
-    update: 'Update'
+    editing:   'Editing %{model}'
+    listing:   'Listing %{model}'
+    new:       'New %{model}'
+    showing:   'Showing %{model}'
+
+    empty_list: 'List %{model} is empty'
 
   button:
-    back: 'Back'
-    edit: 'Edit'
-    delete: 'Delete'
-    show: 'Show'
-
-  header:
-#    to_s: 'Test'
+    back:      'Back'
+    create:    'Create'
+    update:    'Update'
+    delete:    'Delete'
+    edit:      'Edit'
+    show:      'Show'
+    clone:     'Clone'
