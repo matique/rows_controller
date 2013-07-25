@@ -9,7 +9,7 @@ ruby:
 	link_to t('button.edit').html_safe, url_for(action: :edit), class: 'button' }
 
 fieldset.show class="wide mask" id=model_symbol
-  legend = t('ui.showing', model: model_name)
+  legend = t('ui.showing', model: model_name).html_safe
   = render '/shared/error_explanation'
 
   = form_for resource do |f|

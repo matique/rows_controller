@@ -29,7 +29,7 @@ class RowsController < ApplicationController
     respond_to do |format|
       if resource_create
 	flash[:notice] = t('ui.created', model: model_name,
-		      default: "%{model} created.")
+		      default: "%{model} created.").html_safe
 	format.html {
 	  if params[:commit] == 'OK'
 	    redirect_to_index
@@ -50,8 +50,7 @@ class RowsController < ApplicationController
     set_resource
     respond_to do |format|
       if resource_update
-	flash[:notice] = t('ui.updated', model: model_name,
-		      default: "%{model} updated.")
+	flash[:notice] = t('ui.updated', model: model_name).html_safe
 	format.html {
 	  if params[:commit] == 'OK'
 	    redirect_to_index
@@ -71,7 +70,7 @@ class RowsController < ApplicationController
   def destroy
     set_resource
     resource_destroy
-    flash[:notice] = t('ui.destroyed', model: model_name)  unless request.xhr?
+    flash[:notice] = t('ui.destroyed', model: model_name).html_safe  unless request.xhr?
     respond_to do |format|
       format.html { redirect_to_index }
       format.js   { render template: 'rows/destroy', layout: false }

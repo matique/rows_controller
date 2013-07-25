@@ -1,4 +1,4 @@
 = content_for(content)
 - (names || []).each do |name|
   button.button type="submit" name="commit" value=name
-    = t(name, scope: :button)
+    = t(name, scope: :button).html_safe

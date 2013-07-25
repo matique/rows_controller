@@ -15,9 +15,9 @@ de:
 
   button:
     back:      "Zur&uuml;ck"
-    create:    'Neu'
+    create:    'Erstelle'
     update:    'Speichern'
     delete:    'L&ouml;sche'
-    edit:      'Edititeren'
+    edit:      'Editieren'
     show:      'Zeige'
     clone:     'Klonen'
