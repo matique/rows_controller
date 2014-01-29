@@ -1,8 +1,6 @@
 source "http://rubygems.org"
 
 gem 'rails'
-#gem 'rails', '4.0.0.rc1'
-gem 'jquery-rails'
 gem 'slim'
 
 group :test do
