@@ -1,0 +1,12 @@
+language: ruby
+
+rvm:
+  - 1.9.3
+  - 2.1.0
+
+env:
+  - "RAILS_VERSION=2.3.18"
+  - "RAILS_VERSION=4.0"
+
+notifications:
+  email: false

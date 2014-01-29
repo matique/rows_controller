@@ -1,6 +1,8 @@
-source "http://rubygems.org"
+source "https://rubygems.org"
 
-gem 'rails'
+version = ENV["RAILS_VERSION"]
+gem 'rails', version ? "~> #{version}" : ">= 4.0.0"
+
 gem 'slim'
 
 group :test do
