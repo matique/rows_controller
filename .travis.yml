@@ -5,8 +5,8 @@ rvm:
   - 2.1.0
 
 env:
-  - "RAILS_VERSION=2.3"
-  - "RAILS_VERSION=3.2"
+#  - "RAILS_VERSION=2.3"
+#  - "RAILS_VERSION=3.2"
   - "RAILS_VERSION=4.0"
 
 notifications:
