@@ -98,5 +98,3 @@ class RowsController < ApplicationController
   end
 
 end
-
-

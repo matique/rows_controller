@@ -36,8 +36,8 @@ describe OrdersController, ':' do
 
   it 'checking resources' do
     get :index
-    subject.send(:resources).should be_a_kind_of(Array)
-    assigns(:orders).should be_a_kind_of(Array)
+    subject.send(:resources).to_a.should be_a_kind_of(Array)
+    assigns(:orders).to_a.should be_a_kind_of(Array)
     assigns(:orders).should == Order.all
     assigns(:rows).should == Order.all
   end
@@ -51,13 +51,13 @@ describe OrdersController, ':' do
   end
 
   it 'should update' do
-    put :update, { id: order.id }
+    put :update, { id: order.id, order: {name: 'name'} }
     response.should be_true
     response.should redirect_to(action: :edit)
   end
 
   it 'should update #2' do
-    put :update, { id: order.id, commit: 'OK' }
+    put :update, { id: order.id, commit: 'OK', order: {name: 'name'} }
     response.should be_true
     response.should redirect_to(action: :index)
   end

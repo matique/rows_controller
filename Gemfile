@@ -1,8 +1,9 @@
-source "http://rubygems.org"
+source "https://rubygems.org"
+##gemspec
 
-gem 'rails'
-#gem 'rails', '4.0.0.rc1'
-gem 'jquery-rails'
+version = ENV["RAILS_VERSION"]
+gem 'rails', version ? "~> #{version}" : ">= 4.0.0"
+
 gem 'slim'
 
 group :test do
@@ -15,4 +16,5 @@ group :development, :test do
   gem 'watchr'
   gem 'spork'
   gem 'simplecov', require: false
+  gem 'gem-release'
 end
