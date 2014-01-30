@@ -7,6 +7,8 @@ require 'spork'
 require 'bundler'
 Bundler.setup :default, :development, :test
 
+ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
+
 Spork.prefork do
   ENV["RAILS_ENV"] ||= 'test'
 #  require File.expand_path("../../config/environment", __FILE__)
