@@ -3,7 +3,6 @@ RowsController
 [![Gem Version](https://badge.fury.io/rb/rows_controller.png)](http://badge.fury.io/rb/rows_controller)
 [![Build Status](https://travis-ci.org/matique/rows_controller.png?branch=master)](https://travis-ci.org/matique/rows_controller)
 
-
 DRYs Rails controllers. Imagine replacing that @order by 'resource' in the
 controllers/views and, imho, an area for DRYing appears.
 Instead of:
@@ -113,4 +112,4 @@ Look for:
 - decent_exposure
 
 
-Copyright (c) 2009-2013 [Dittmar Krall], released under the MIT license
+Copyright (c) 2009-2014 [Dittmar Krall], released under the MIT license
