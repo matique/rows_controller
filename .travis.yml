@@ -1,13 +1,16 @@
 language: ruby
+#bundler_args: --without production
+before_script: rm -f Gemfile.lock
+before_install: rm -f Gemfile.lock
+#after_script: rm -f Gemfile.lock
 
 rvm:
   - 1.9.3
   - 2.1.0
 
-#env:
-#  - "RAILS_VERSION=2.3"
-#  - "RAILS_VERSION=3.2"
-#  - "RAILS_VERSION=4.0"
+env:
+  - "RAILS_VERSION=3.2"
+  - "RAILS_VERSION=4.0.2"
 
 notifications:
   email: false
