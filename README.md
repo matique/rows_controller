@@ -40,7 +40,7 @@ overwrites the default Rows view as Rails will first look
 into the directory "#{Rails.root}/app/views" before looking
 into the RowsController.
 
-Similarly, partials '_row_buttons' and '_list_footer' may be overwritten
+Similarly, partials '\_row\_buttons' and '\_list\_footer' may be overwritten
 as well.
 
 
@@ -60,7 +60,7 @@ Rails 4
 -------
 
 This gem is intended for Rails 4.
-For older Rails versions feel free to switch to "gem 'rows_controller', '0.4.4'".
+For older Rails versions feel free to switch to "gem 'rows_controller', '= 0.4.4'".
 
 Rails 4 introduced strong parameters.
 To support them a private method 'resource_whitelist' is required
