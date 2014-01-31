@@ -7,8 +7,15 @@ rvm:
   - 2.1.0
 
 env:
-  - "RAILS_VERSION=3.2"
+  - "RAILS_VERSION=3.2.16"
   - "RAILS_VERSION=4.0.2"
 
 notifications:
   email: false
+
+group :production do
+  gem 'watchr'
+  gem 'spork'
+  gem 'simplecov'
+  gem 'gem-release'
+end
