@@ -117,7 +117,7 @@ PLATFORMS
 DEPENDENCIES
   capybara
   gem-release
-  rails (>= 4.0.0)
+  rails (~> 4.0.2)
   rspec-rails
   simplecov
   slim
