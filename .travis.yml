@@ -12,10 +12,3 @@ env:
 
 notifications:
   email: false
-
-group :production do
-  gem 'watchr'
-  gem 'spork'
-  gem 'simplecov'
-  gem 'gem-release'
-end

@@ -18,3 +18,10 @@ group :development, :test do
   gem 'simplecov', require: false
   gem 'gem-release'
 end
+
+group :production do
+  gem 'watchr'
+  gem 'spork'
+  gem 'simplecov'
+  gem 'gem-release'
+end
