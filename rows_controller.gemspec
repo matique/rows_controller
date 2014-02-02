@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.description = "YourController < RowsController ( < ApplicationController)."
   s.authors     = ['Dittmar Krall']
   s.email       = ['dittmar.krall@matique.de']
-  s.homepage    = "www.matique.de"
+  s.homepage    = "http://matique.de"
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
