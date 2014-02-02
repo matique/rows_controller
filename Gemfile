@@ -2,7 +2,7 @@ source "https://rubygems.org"
 ##gemspec
 
 version = ENV["RAILS_VERSION"]
-gem 'rails', version ? "~> #{version}" : ">= 4.0.0"
+gem 'rails', version ? "~> #{version}" : ">= 4.0.2"
 
 gem 'slim'
 
