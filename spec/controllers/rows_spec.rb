@@ -18,7 +18,7 @@ describe RowsController do
   specify { should respond_to(:destroy) }
 
   it 'coverage resource_format' do
-    subject.send(:resource_format, 'abc').should == 'abc'
+    expect(subject.send(:resource_format, 'abc')).to eq('abc')
   end
 
 end

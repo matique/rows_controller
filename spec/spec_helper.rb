@@ -22,6 +22,8 @@ Spork.prefork do
 # increases speed; not sure why
     config.use_transactional_fixtures = true
 
+    config.include(Capybara::DSL)
+    config.infer_spec_type_from_file_location!
     ActiveSupport::Dependencies.clear
   end
 end

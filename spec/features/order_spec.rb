@@ -7,32 +7,32 @@ describe "Order" do
 
   it 'should be created' do
     visit "/orders"
-    page.should have_content("is empty")
+    expect(page).to have_content("is empty")
 
     click_link "Create"
     fill_in "Name",    :with => "a name"
     click_button "Create"
-    page.should have_content("Order created.")
-    page.should have_content("Editing Order")
+    expect(page).to have_content("Order created.")
+    expect(page).to have_content("Editing Order")
 
-    Order.all.first.name.should == "a name"
+    expect(Order.all.first.name).to eq("a name")
   end
 
   it 'should be deleted' do
     Order.create
     n = Order.all.length
     visit "/orders"
-    page.should have_content("Listing Order")
+    expect(page).to have_content("Listing Order")
 
     click_link "Delete"
-    page.should have_content("Order deleted.")
-    Order.all.length.should == (n - 1)
+    expect(page).to have_content("Order deleted.")
+    expect(Order.all.length).to eq((n - 1))
   end
 
   it 'index should have check_box for multi_selection' do
     Order.create :name => 'name', :qty => 123
     visit "/orders"
-    page.should have_css('table tr input[name="multi_selection[]"]')
+    expect(page).to have_css('table tr input[name="multi_selection[]"]')
   end
 
   it 'should be copied' do
@@ -41,14 +41,14 @@ describe "Order" do
     n = Order.all.length
     visit "/orders/#{order.id}/copy"
 
-    page.should have_content("New")
+    expect(page).to have_content("New")
     fill_in "Name",    :with => "a name"
     click_button "OK"
 
-    Order.all.length.should == (n + 1)
+    expect(Order.all.length).to eq(n + 1)
     order2 = Order.find(order.id + 1)
-    order2.name.should_not == order.name
-    order2.qty.should == order.qty
+    expect(order2.name).to_not eq(order.name)
+    expect(order2.qty).to eq(order.qty)
   end
 
 end
