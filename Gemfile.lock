@@ -1,3 +1,8 @@
+PATH
+  remote: .
+  specs:
+    rows_controller (1.1.7)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -119,6 +124,7 @@ PLATFORMS
 DEPENDENCIES
   capybara
   rails (>= 4.1)
+  rows_controller!
   rspec-rails (>= 3.1)
   simplecov
   slim

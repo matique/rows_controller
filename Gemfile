@@ -1,5 +1,4 @@
 source "https://rubygems.org"
-##gemspec
 
 version = ENV["RAILS_VERSION"]
 gem 'rails', version ? "~> #{version}" : '>= 4.1'
@@ -17,3 +16,5 @@ group :development, :test do
   gem 'spork'
   gem 'simplecov', require: false
 end
+
+gemspec
