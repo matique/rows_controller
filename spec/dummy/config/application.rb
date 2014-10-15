@@ -2,7 +2,7 @@ require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
 
-Bundler.require(*Rails.groups(:assets => %w(development test)))
+Bundler.require(*Rails.groups)
 require "rows_controller"
 
 module Dummy
@@ -18,11 +18,6 @@ module Dummy
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
-
-
-    # Old stuff
-    config.encoding = "utf-8"
-    config.assets.enabled = true
-    config.assets.version = '1.0'
   end
 end
+
