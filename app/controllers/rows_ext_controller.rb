@@ -12,7 +12,7 @@ class RowsExtController < RowsController
     items = params[:multi_tick] || []
     items -= ['']
     items.map { |id|  model_class.find_by_id(id.to_i).destroy }
-    redirect_to :action => :index
+    redirect_to orders_url
   end
 
 end
