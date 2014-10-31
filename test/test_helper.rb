@@ -3,11 +3,11 @@
 ##   ActiveSupport::TestCase.fixture_path = File.expand_path("../fixtures", __FILE__)
 ## end
 
-#require 'simplecov'
-#SimpleCov.start do
-#  add_filter 'test'
-#  command_name 'Minitest'
-#end
+require 'simplecov'
+SimpleCov.start do
+  add_filter 'test'
+  command_name 'Minitest'
+end
 
 
 # Configure Rails Environment
