@@ -8,6 +8,7 @@ gem 'slim'
 group :test do
   gem 'minitest-capybara'
   gem 'capybara'
+  gem 'minitest-spec-rails'
   gem 'rspec-rails', '>= 3.1'
 end
 

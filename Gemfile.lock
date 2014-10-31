@@ -55,6 +55,9 @@ GEM
       capybara (~> 2.2)
       minitest (~> 5.0)
       rake
+    minitest-spec-rails (5.1.0)
+      minitest (~> 5.0)
+      rails (~> 4.1)
     multi_json (1.10.1)
     nokogiri (1.6.3.1)
       mini_portile (= 0.6.0)
@@ -128,6 +131,7 @@ PLATFORMS
 DEPENDENCIES
   capybara
   minitest-capybara
+  minitest-spec-rails
   rails (>= 4.1)
   rows_controller!
   rspec-rails (>= 3.1)
