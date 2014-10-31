@@ -6,6 +6,7 @@ gem 'rails', version ? "~> #{version}" : '>= 4.1'
 gem 'slim'
 
 group :test do
+  gem 'minitest-capybara'
   gem 'capybara'
   gem 'rspec-rails', '>= 3.1'
 end
