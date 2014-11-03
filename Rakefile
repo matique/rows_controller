@@ -1,18 +1,7 @@
-begin
-  require 'bundler/setup'
-rescue LoadError
-  puts 'You must `gem install bundler` and `bundle install` to run rake tasks'
-end
+require File.expand_path('../test/dummy/config/application', __FILE__)
 
-
-require 'rspec/core'
-require 'rspec/core/rake_task'
-
+Rails.application.load_tasks
 Bundler::GemHelper.install_tasks
-RSpec::Core::RakeTask.new(:spec)
-
-task default: :spec
-
 
 desc "Clean automatically generated files"
 task :clean do

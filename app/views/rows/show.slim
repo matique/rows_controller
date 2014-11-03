@@ -1,7 +1,7 @@
 ruby:
- # Template for RowsController (show)
- # Requires resource model_name model_symbol
- #   partial 'form' template
+  # Template for RowsController (show)
+  # Requires resource model_name model_symbol
+  #   partial 'form' template
 
   content_for(:submit_left) {
 	link_to t('button.back').html_safe, url_for(action: :index), class: 'button' }
@@ -12,6 +12,6 @@ fieldset.show class="wide mask" id=model_symbol
   legend = t('ui.showing', model: model_name).html_safe
   = render '/shared/error_explanation'
 
-  = form_for resource do |f|
+  = form_for resource, url: {action: :show}, method: :get do |f|
     = render 'form', f: f
     = render '/rows/submit'

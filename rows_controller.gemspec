@@ -15,12 +15,10 @@ Gem::Specification.new do |s|
   s.email       = ['dittmar.krall@matique.de']
   s.homepage    = 'http://matique.de'
 
-  s.files         = `git ls-files`.split("\n")
-  s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
-  s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
+  s.files = Dir["{app,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
+#  s.test_files = Dir["test/**/*", '.watchr', '.travis.yml']
   s.require_paths = ['lib']
 
   s.add_development_dependency 'sqlite3', '~> 0'  # for testing
-  s.add_development_dependency 'rspec-rails', '~> 0'
   s.add_development_dependency 'capybara', '~> 0'
 end
