@@ -11,9 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 1) do
+ActiveRecord::Schema.define(version: 2) do
 
-  create_table "orders", force: true do |t|
+  create_table "order_items", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "orders", force: :cascade do |t|
     t.string   "name"
     t.string   "qty"
     t.datetime "created_at"
