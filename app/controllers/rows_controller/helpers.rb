@@ -84,7 +84,9 @@ class RowsController < ApplicationController
   end
 
   def model_name
-    @_model_name ||= model_class.name
+p 1111111111111111
+#    @_model_name ||= model_class.name
+p [11, model_class.model_name.singular]
   end
 
   def model_symbol
