@@ -1,6 +1,6 @@
-require 'rows_controller/resources'
-require 'rows_controller/model'
-require 'rows_controller/utils'
+require 'rows/resources'
+require 'rows/model'
+require 'rows/utils'
 
 class RowsController < ApplicationController
   before_action :set_resource, only: [:show, :edit, :update, :destroy]
@@ -53,7 +53,7 @@ class RowsController < ApplicationController
     flash[:notice] = t('ui.destroyed', model: model_name).html_safe  unless request.xhr?
     respond_to do |format|
       format.html { redirect_to action: :index }
-      format.js   { render template: 'rows_controller/destroy', layout: false }
+      format.js   { render template: 'rows/destroy', layout: false }
       format.json { head :no_content }
     end
   end

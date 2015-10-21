@@ -1,6 +1,6 @@
 $:.push File.expand_path("../lib", __FILE__)
 
-require "rows_controller/version"
+require "rows/version"
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
