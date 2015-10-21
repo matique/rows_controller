@@ -33,7 +33,7 @@ Low level methods like 'resources' may be redefined as well.
 An example:
 
     def resources
-      @_resources ||= model_class.paginate(:page => params[:page])
+      @_resources ||= model_class.paginate(page: params[:page])
     end
 
 RowsController inherites from ApplicationController, i.e. all the helpers
@@ -95,7 +95,7 @@ The "id" of the cloned resource is set to nil.
 Usage of "copy" requires a defining in config/routes.rb. An example:
 
     resources :orders
-      get 'copy', :on => :member
+      get 'copy', on: :member
     end
 
 ### columns
