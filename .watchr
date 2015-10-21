@@ -39,10 +39,13 @@ end
   watch("#{type}/#{type}_helper\.rb") { run_all_tests }
   watch("#{type}/.*/*_#{type}\.rb")   { |match| run_it type, match[0] }
 }
-%w{rb erb haml slim}.each { |type|
-  watch("app/.*/.*\.#{type}") { |m|
-    run_matching_files("#{m[0].split('/').at(2).split('.').first}")
-  }
+#%w{rb erb haml slim}.each { |type|
+#  watch("app/.*/.*\.#{type}") { |m|
+#    run_matching_files("#{m[0].split('/').at(2).split('.').first}")
+#  }
+#}
+Dir['**/*.rb'].find_all{ |x| !(x =~ /_test\.rb$/) }.each { |name|
+  watch(name)  { run_all_tests }
 }
 
 # Ctrl-\ or ctrl-4

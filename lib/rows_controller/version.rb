@@ -1,3 +1,3 @@
 module Rows
-  VERSION = "1.1.9"
+  VERSION = "2.0.3"
 end
