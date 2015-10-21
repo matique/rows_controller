@@ -11,7 +11,7 @@ gemfile:
 matrix:
   include:
     - rvm: 2.0.0
-      gemfiles/rails-3.2.16.gemfile
+      gemfile: gemfiles/rails-3.2.16.gemfile
   exclude:
 #    # rails 4.0 requries ruby 1.9.3 or newer
 #    - rvm: 1.9.2
