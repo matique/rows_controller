@@ -1,0 +1,18 @@
+rails plugin new rows --full
+
+mv rows rows_controller
+
+cd rows_controller
+med NOTES
+
+cd test/dummy
+rails g scaffold order name:string
+rails g scaffold order::items price:string
+rake db:drop db:create db:migrate db:seed
+bin/setup
+
+gem install appraisal
+appraisal generate --travis
+appraisal install
+appraisal rake test
+appraisal rails-4.2.4 rake test

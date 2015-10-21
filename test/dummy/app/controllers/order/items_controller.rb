@@ -2,7 +2,7 @@ class Order::ItemsController < RowsController
 
  private
   def resource_whitelist
-    %w{name}
+    %i{ name }
   end
 
 end

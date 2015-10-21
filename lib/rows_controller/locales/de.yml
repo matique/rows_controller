@@ -8,10 +8,10 @@ de:
 
     editing:   'Editiere %{model}'
     listing:   'Liste %{model}'
-    new:       'Neu %{model}'
+    new:       'Neue(r/s) %{model}'
     showing:   'Zeige %{model}'
 
-    empty_list: 'Liste %{model} is leer.'
+    empty_list: 'Liste %{model} ist leer.'
 
   button:
     back:      "Zur&uuml;ck"

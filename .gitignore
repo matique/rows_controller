@@ -1,13 +1,10 @@
-leaves . | grep -v '/.git' | grep order |grep test
-./test/controllers/order/items_test.rb
-./test/controllers/orders_test.rb
-./test/dummy/app/controllers/order/items_controller.rb
-./test/dummy/app/controllers/orders_controller.rb
-./test/dummy/app/models/order/item.rb
-./test/dummy/app/models/order.rb
-./test/dummy/app/views/orders/_form.html.erb
-./test/dummy/db/migrate/001_create_orders.rb
-./test/dummy/db/migrate/002_create_order_items.rb
-./test/integration/order_test.rb
-./test/models/order/item_test.rb
-./test/models/order_test.rb
+.bundle/
+log/*.log
+pkg/
+rows_controller-*.gem
+*.gemfile.lock
+test/dummy/db/*.sqlite3
+test/dummy/db/*.sqlite3-journal
+test/dummy/log/*.log
+test/dummy/tmp/
+test/dummy/.sass-cache
