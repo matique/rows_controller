@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.version     = Rows::VERSION
   s.authors     = ['Dittmar Krall']
   s.email       = ['dittmar.krall@matique.de']
-  s.homepage    = 'http://matique.de'
+  s.homepage    = 'https://github.com/matique/rows_controller'
   s.summary     = 'RowsController DRYs your controllers.'
   s.description = 'YourController < RowsController ( < ApplicationController).'
   s.license     = 'MIT'
