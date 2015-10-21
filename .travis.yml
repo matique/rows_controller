@@ -2,7 +2,8 @@ language: ruby
 sudo: false
 rvm:
 #  - 2.0.0
-#  - 2.2.0
+  - 2.2.0
+  - 1.9.3
   - 2.2.3
 
 gemfile:
@@ -11,12 +12,9 @@ gemfile:
 
 matrix:
   include:
-    - rvm: 2.0.0
-      gemfile: gemfiles/rails-3.2.16.gemfile
+#    - rvm: 2.0.0
+#      gemfile: gemfiles/rails-3.2.16.gemfile
   exclude:
-#    # rails 4.0 requries ruby 1.9.3 or newer
-#    - rvm: 1.9.2
-#      gemfile: gemfiles/rails-4.0.gemfile
 
 notifications:
   email: false
