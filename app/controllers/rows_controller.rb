@@ -3,12 +3,6 @@ require 'rows/model'
 require 'rows/utils'
 
 class RowsController < ApplicationController
-  if defined?(before_action)
-    before_action :set_resource, only: [:show, :edit, :update, :destroy]
-  else
-    before_filter :set_resource, only: [:show, :edit, :update, :destroy]
-  end
-
   helper_method :set_resource, :set_resources, :resource, :resources
   helper_method :resource_columns, :resource_format
   helper_method :model_class, :model_name
@@ -30,6 +24,7 @@ class RowsController < ApplicationController
 
   # GET /:resource/:id[.json]
   def show
+    set_resource
   end
 
   # GET /:resource/new
@@ -39,6 +34,7 @@ class RowsController < ApplicationController
 
   # GET /:resource/:id/edit
   def edit
+    set_resource
   end
 
   # POST /:resources[.json]
@@ -48,11 +44,13 @@ class RowsController < ApplicationController
 
   # PATCH/PUT /:resources/:id[.json]
   def update
+    set_resource
     create_update(:resource_update, 'updated')
   end
 
   # DELETE /:resources/:id[.json]
   def destroy
+    set_resource
     resource_destroy
     flash[:notice] = t('ui.destroyed', model: model_name).html_safe  unless request.xhr?
     respond_to do |format|

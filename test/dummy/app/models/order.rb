@@ -1,7 +1,9 @@
 class Order < ActiveRecord::Base
 
-  before_save :huhu
-  def huhu
+  before_save :err
+
+ protected
+  def err
     return true  unless name == 'error'
 
     self.errors.add :base, 'panic'

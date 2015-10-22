@@ -1,19 +1,12 @@
 language: ruby
 sudo: false
 rvm:
-#  - 2.0.0   # OK for Rails 4.2.4
-#  - 2.2.0
+  - 2.0.0
   - 2.2.3
 
 gemfile:
+  - gemfiles/rails_4.2.0.gemfile
   - gemfiles/rails_4.2.4.gemfile
-
-matrix:
-  include:
-# fails due to test/dummy/config/environments/test.rb
-#    - rvm: 1.9.3 # or 2.0.0
-#      gemfile: gemfiles/rails-3.2.16.gemfile
-  exclude:
 
 notifications:
   email: false
