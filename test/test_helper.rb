@@ -8,8 +8,19 @@
 # Configure Rails Environment
 ENV["RAILS_ENV"] = "test"
 
-require File.expand_path("../../test/dummy/config/environment.rb",  __FILE__)
-ActiveRecord::Migrator.migrations_paths = [File.expand_path("../../test/dummy/db/migrate", __FILE__)]
+# trick to find test/dummy...  environment
+dir = "dummy"
+# optimization: reduce calls to rails -v
+arr = Dir["test/dummy*"]
+if arr.length > 1
+  major = `rails -v` =~ /Rails (\d)/
+  str = "dummy#{$1}"
+  dir = str  if File.exists?("test/#{str}")
+p "************** test/#{dir} ************"
+end
+
+require File.expand_path("../../test/#{dir}/config/environment.rb",  __FILE__)
+ActiveRecord::Migrator.migrations_paths = [File.expand_path("../../test/#{dir}/db/migrate", __FILE__)]
 require "rails/test_help"
 
 # Filter out Minitest backtrace while allowing backtrace from other libraries

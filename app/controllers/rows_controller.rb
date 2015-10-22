@@ -3,7 +3,11 @@ require 'rows/model'
 require 'rows/utils'
 
 class RowsController < ApplicationController
-  before_action :set_resource, only: [:show, :edit, :update, :destroy]
+  if defined?(before_action)
+    before_action :set_resource, only: [:show, :edit, :update, :destroy]
+  else
+    before_filter :set_resource, only: [:show, :edit, :update, :destroy]
+  end
 
   helper_method :set_resource, :set_resources, :resource, :resources
   helper_method :resource_columns, :resource_format
