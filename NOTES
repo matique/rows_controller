@@ -16,3 +16,6 @@ appraisal generate --travis
 appraisal install
 appraisal rake test
 appraisal rails-4.2.4 rake test
+
+gem install wwtd
+wwtd --local
