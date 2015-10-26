@@ -16,5 +16,5 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
   s.require_paths = ['lib']
 
-  s.add_development_dependency 'sqlite3', '~> 0'
+  s.add_development_dependency 'sqlite3'
 end
