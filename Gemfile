@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gemspec
 
 gem 'rails', "~> 4.2"
-gem 'slim'
+gem "slim"
 
 group :development, :test do
   gem "appraisal"
