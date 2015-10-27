@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class OrdersControllerTest < ActionController::TestCase
+  fixtures :all
 
   setup do
     @order = orders(:one)
@@ -75,19 +76,6 @@ class OrdersControllerTest < ActionController::TestCase
     post :create, { id: @order.id, order: {name: 'error'} }
     assert_response :success
     assert_template 'rows/new'
-  end
-
-end
-
-
-class Order::ItemsControllerTest < ActionController::TestCase
-
-  test 'checking model_...' do
-    get :index
-    assert_equal Order::Item,    @controller.send(:model_class)
-    assert_equal 'Order::Item',  @controller.send(:model_name)
-    assert_equal 'order_item',   @controller.send(:model_symbol)
-    assert_equal 'order_items',  @controller.send(:model_symbol_plural)
   end
 
 end

@@ -1,3 +1,5 @@
+Just notes for me.
+
 rails plugin new rows --full
 
 mv rows rows_controller
@@ -11,6 +13,7 @@ rails g scaffold order::items price:string
 rake db:drop db:create db:migrate db:seed
 bin/setup
 
+---------
 gem install appraisal
 appraisal generate --travis
 appraisal install
@@ -19,3 +22,43 @@ appraisal rails-4.2.4 rake test
 
 gem install wwtd
 wwtd --local
+
+
+-----------------------------------------------------
+ruby -v; rails -v
+
+----------
+git clone rows3 rows4
+
+cd rows4
+cd test/dummy
+rake db:drop db:create db:migrate
+rake
+
+cd rows4
+rake
+
+----------
+git mv test/dummy test/dummy3
+med Rakefile
+med test/test_helper.rb
+rake
+
+
+--------
+Problem?
+
+Rails used 3.2.22 4.2.0 4.2.4
+
+appraisal in GemFile a gem 'rails', "3.2.22" working fine with all rails
+appraisal in GemFile a gem 'rails', "~> 4.2" error:
+ in Rakefile
+  before load 'rails/tasks/engine.rake' Rails 3.2.22
+  after  load 'rails/tasks/engine.rake' Rails 4.2.4
+
+ENV['BUNDLE_GEMFILE'] may help?
+
+==> ./test/dummy3/config/boot.rb:
+  ENV['BUNDLE_GEMFILE'] ||= gemfile       # notice ||
+
+wwtd --local OK

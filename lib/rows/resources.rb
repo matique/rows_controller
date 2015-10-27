@@ -61,12 +61,13 @@ module Rows::Resources
   # Never trust parameters from the scary internet, only allow the white list through.
   def resource_params
     permits = resource_whitelist
-    if params.respond_to?(:require)
+    if Rails::VERSION::MAJOR > 3
       params.require(model_symbol).permit(permits)
     else
       pars = params[model_symbol] || {}
       pars.keys.each { |x|
-	unless permits.include?(x) || permits.include?({x.to_sym => []})
+	x = x.to_sym
+	unless permits.include?(x) || permits.include?({x => []})
 	  pars.delete(x)
 	  p "** WARNING: model <#{model_name}> dropping params <#{x}>"
 	end

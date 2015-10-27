@@ -8,18 +8,14 @@
 # Configure Rails Environment
 ENV["RAILS_ENV"] = "test"
 
-# trick to find test/dummy...  environment
-dir = "dummy"
-# optimization: reduce calls to rails -v
-arr = Dir["test/dummy*"]
-if arr.length > 1
-  major = `rails -v` =~ /Rails (\d)/
-  str = "dummy#{$1}"
-  dir = str  if File.exists?("test/#{str}")
-p "************** test/#{dir} ************"
-end
+rails_version = `rails -v`.strip
+aster = '#' * 20
+puts "#{aster} Testing Ruby #{RUBY_VERSION}; #{rails_version} #{aster}"
 
-require File.expand_path("../../test/#{dir}/config/environment.rb",  __FILE__)
+rails_version =~ /Rails (\d*)\./
+dir = "dummy#{$1}"
+
+require File.expand_path("../#{dir}/config/environment.rb",  __FILE__)
 ActiveRecord::Migrator.migrations_paths = [File.expand_path("../../test/#{dir}/db/migrate", __FILE__)]
 require "rails/test_help"
 
@@ -28,7 +24,7 @@ require "rails/test_help"
 Minitest.backtrace_filter = Minitest::BacktraceFilter.new
 
 # Load support files
-##Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
+Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
 
 # Load fixtures from the engine
 if ActiveSupport::TestCase.respond_to?(:fixture_path=)

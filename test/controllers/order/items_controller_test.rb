@@ -3,8 +3,18 @@
 require 'test_helper'
 
 class Order::ItemsControllerTest < ActionController::TestCase
+  fixtures :all
+
   setup do
     @order_item = order_items(:one)
+  end
+
+  test 'checking model_...' do
+    get :index
+    assert_equal Order::Item,    @controller.send(:model_class)
+    assert_equal 'Order::Item',  @controller.send(:model_name)
+    assert_equal 'order_item',   @controller.send(:model_symbol)
+    assert_equal 'order_items',  @controller.send(:model_symbol_plural)
   end
 
   test "should get index" do
@@ -38,7 +48,8 @@ class Order::ItemsControllerTest < ActionController::TestCase
   end
 
   test "should update order_item" do
-    patch :update, id: @order_item, order_item: { price: @order_item.price }
+#    patch :update, id: @order_item, order_item: { price: @order_item.price }
+    put :update, id: @order_item, order_item: { price: @order_item.price }
 ##    assert_redirected_to order_item_path(assigns(:order_item))
     assert_redirected_to edit_order_item_path(assigns(:order_item))
   end

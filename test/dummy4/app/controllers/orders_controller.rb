@@ -1,4 +1,4 @@
-class Order::ItemsController < RowsController
+class OrdersController < RowsExtController
 
  private
   def resource_whitelist

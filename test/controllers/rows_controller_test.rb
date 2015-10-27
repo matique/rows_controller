@@ -33,9 +33,9 @@ class RowsControllerTest < ActionController::TestCase
   end
 
   test 'exposed model_ private methods' do
-    list = %i{model_class model_name model_symbol model_symbol_plural
-	      model_name_from_record_or_class}
-    assert_equal list.sort, filter(@controller.public_methods, 'model_')
+    list = %i{model_class model_name model_symbol model_symbol_plural}
+    got = filter(@controller.public_methods, 'model_')
+    assert_equal list.sort, (list & got).sort
   end
 
  private
