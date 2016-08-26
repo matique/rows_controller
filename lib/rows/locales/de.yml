@@ -14,10 +14,12 @@ de:
     empty_list: 'Liste %{model} ist leer.'
 
   button:
+    ok:        OK
     back:      "Zur&uuml;ck"
-    create:    'Erstelle'
-    update:    'Speichern'
+    cancel:    Abbrechen
+    create:    Erstelle
+    update:    Speichern
     delete:    'L&ouml;sche'
-    edit:      'Editieren'
-    show:      'Zeige'
-    clone:     'Klonen'
+    edit:      Editieren
+    show:      Zeige
+    clone:     Klonen
