@@ -12,7 +12,7 @@ class OrdersControllerTest < ActionController::TestCase
       get action
       assert_response :success
       assert_template "rows/#{action}"
-      assert_match /Order/, response.body
+      assert_match(/Order/, response.body)
     end
   end
 
@@ -21,7 +21,7 @@ class OrdersControllerTest < ActionController::TestCase
       get action, id: @order.id
       assert_response :success
       assert_template "rows/#{action}"
-      assert_match /Order/, response.body
+      assert_match(/Order/, response.body)
     end
   end
 

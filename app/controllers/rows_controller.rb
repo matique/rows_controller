@@ -13,6 +13,7 @@ class RowsController < ApplicationController
   include Rows::Utils
 
   def self.model_class(model_class = nil)
+    @_model_class ||= nil
     @_model_class = model_class  unless model_class.nil?
     @_model_class
   end

@@ -40,7 +40,7 @@ class RowsControllerTest < ActionController::TestCase
 
  private
   def filter(x, criteria)
-    x.map(&:to_s).sort.find_all { |x| x =~ /#{criteria}/ }.map(&:to_sym).sort
+    x.map(&:to_s).sort.find_all { |y| y =~ /#{criteria}/ }.map(&:to_sym).sort
   end
 
   def test_response(list)

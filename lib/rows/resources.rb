@@ -13,11 +13,11 @@ module Rows::Resources
   end
 
   def resources
-    @rows || set_resources
+    @rows ||= set_resources
   end
 
   def resource
-    @row || set_resource
+    @row ||= set_resource
   end
 
  private
