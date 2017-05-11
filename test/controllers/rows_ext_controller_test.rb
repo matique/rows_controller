@@ -8,7 +8,7 @@ class OrdersControllerTest < ActionController::TestCase
 #    n = Order.all.length
     Order.all.length
 
-    put :copy, id: order.id
+    put :copy, params: { id: order.id }
     assert_response :success
     assert_template 'rows/new'
     assert_match(/New Order/, response.body)

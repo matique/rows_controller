@@ -15,6 +15,7 @@ puts "#{aster} Testing Ruby #{RUBY_VERSION}; #{rails_version} #{aster}"
 rails_version =~ /Rails (\d*)\./
 dir = "dummy#{$1}"
 
+
 require File.expand_path("../#{dir}/config/environment.rb",  __FILE__)
 ActiveRecord::Migrator.migrations_paths = [File.expand_path("../../test/#{dir}/db/migrate", __FILE__)]
 require "rails/test_help"

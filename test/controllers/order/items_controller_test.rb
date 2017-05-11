@@ -5,7 +5,7 @@ require 'test_helper'
 class Order::ItemsControllerTest < ActionController::TestCase
   fixtures :all
 
-  setup do
+  def setup
     @order_item = order_items(:one)
   end
 
@@ -30,7 +30,7 @@ class Order::ItemsControllerTest < ActionController::TestCase
 
   test "should create order_item" do
     assert_difference('Order::Item.count') do
-      post :create, order_item: { price: @order_item.price }
+      post :create, params: { order_item: { price: @order_item.price } }
     end
 
 ##    assert_redirected_to order_item_path(assigns(:order_item))
@@ -38,25 +38,25 @@ class Order::ItemsControllerTest < ActionController::TestCase
   end
 
   test "should show order_item" do
-    get :show, id: @order_item
+    get :show, params: { id: @order_item }
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, id: @order_item
+    get :edit, params: { id: @order_item }
     assert_response :success
   end
 
   test "should update order_item" do
-#    patch :update, id: @order_item, order_item: { price: @order_item.price }
-    put :update, id: @order_item, order_item: { price: @order_item.price }
+    put :update, params: { id: @order_item,
+		order_item: { price: @order_item.price } }
 ##    assert_redirected_to order_item_path(assigns(:order_item))
     assert_redirected_to edit_order_item_path(assigns(:order_item))
   end
 
   test "should destroy order_item" do
     assert_difference('Order::Item.count', -1) do
-      delete :destroy, id: @order_item
+      delete :destroy, params: { id: @order_item }
     end
 
     assert_redirected_to order_items_path
