@@ -2,6 +2,7 @@ require 'test_helper'
 
 class OrdersControllerTest < ActionController::TestCase
 #class OrdersControllerTest < ActionDispatch::IntegrationTest
+#class OrdersControllerTest < ActiveSupport::TestCase
   fixtures :all
 
   def setup

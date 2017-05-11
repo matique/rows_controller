@@ -1,6 +1,8 @@
 require 'test_helper'
 
 class OrdersControllerTest < ActionController::TestCase
+#class OrdersControllerTest < ActionDispatch::IntegrationTest
+#class OrdersControllerTest < ActiveSupport::TestCase
 
   test 'respond to :copy' do
     assert @controller.respond_to?(:copy)
