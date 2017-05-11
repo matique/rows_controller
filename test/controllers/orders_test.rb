@@ -1,9 +1,10 @@
 require 'test_helper'
 
 class OrdersControllerTest < ActionController::TestCase
+#class OrdersControllerTest < ActionDispatch::IntegrationTest
   fixtures :all
 
-  setup do
+  def setup
     @order = orders(:one)
   end
 
@@ -18,7 +19,7 @@ class OrdersControllerTest < ActionController::TestCase
 
   %i{ edit show }.each do |action|
     test "renders the '#{action}' template" do
-      get action, id: @order.id
+      get action, params: { id: @order.id }
       assert_response :success
       assert_template "rows/#{action}"
       assert_match(/Order/, response.body)
@@ -26,7 +27,7 @@ class OrdersControllerTest < ActionController::TestCase
   end
 
   test 'checking resource' do
-    get :show, id: @order.id
+    get :show, params: { id: @order.id }
     assert_equal @order, @controller.send(:resource)
     assert_equal @order, assigns(:order)
     assert_equal @order, assigns(:row)
@@ -41,7 +42,7 @@ class OrdersControllerTest < ActionController::TestCase
   end
 
   test 'checking model_class' do
-    get :show, id: @order.id
+    get :show, params: { id: @order.id }
     assert_equal Order,    @controller.send(:model_class)
     assert_equal 'Order',  @controller.send(:model_name)
     assert_equal 'order',  @controller.send(:model_symbol)
@@ -50,30 +51,30 @@ class OrdersControllerTest < ActionController::TestCase
 
   test "should create order #2" do
     assert_difference('Order.count') do
-      post :create, commit: 'OK', order: { name: @order.name }
+      post :create, params: { commit: 'OK', order: { name: @order.name } }
     end
   end
 
   test 'should update' do
-    put :update, { id: @order.id, order: {name: 'name'} }
+    put :update, params: { id: @order.id, order: {name: 'name'} }
     assert response
     assert_redirected_to(action: :edit)
   end
 
   test 'should update #2' do
-    put :update, { id: @order.id, commit: 'OK', order: {name: 'name'} }
+    put :update, params: {id: @order.id, commit: 'OK', order: {name: 'name'}}
     assert response
     assert_redirected_to(action: :index)
   end
 
   test 'should not update' do
-    put :update, { id: @order.id, order: {name: 'error'} }
+    put :update, params: { id: @order.id, order: {name: 'error'} }
     assert_response :success
     assert_template 'rows/edit'
   end
 
   test 'should not create' do
-    post :create, { id: @order.id, order: {name: 'error'} }
+    post :create, params: { id: @order.id, order: {name: 'error'} }
     assert_response :success
     assert_template 'rows/new'
   end
