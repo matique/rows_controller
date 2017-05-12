@@ -73,6 +73,15 @@ appraise 'rails-5.1' do
   gem 'rails', '~> 5.1'
 end
 
+rvm:
+  - 2.2.3
+  - 2.4.1
+
+
+$ gem install appraisal
 $ appraisal install
-$ appraisal rails-5.1 rake test
+$ appraisal generate --travis
+$ appraisal rails-4.2.0 rake test
+$ appraisal rails-4.2.4 rake test
+$ appraisal rails-5.1 rails test
 $ appraisal rake test

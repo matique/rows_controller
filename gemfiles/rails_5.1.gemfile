@@ -4,12 +4,12 @@ source "https://rubygems.org"
 
 gem "rails", "~> 5.1"
 gem "slim"
+gem "rails-controller-testing"
 gem "minitest", "~> 5.10", "!= 5.10.2"
 
 group :development, :test do
   gem "appraisal"
   gem "observr"
-  gem "rails-controller-testing"
 end
 
 gemspec path: "../"

@@ -6,9 +6,9 @@ rvm:
   - 2.4.1
 
 #  - gemfiles/rails_3.2.gemfile   #running at home but not on travis-ci
+#  - gemfiles/rails_4.2.0.gemfile
+#  - gemfiles/rails_4.2.4.gemfile
 gemfile:
-  - gemfiles/rails_4.2.0.gemfile
-  - gemfiles/rails_4.2.4.gemfile
   - gemfiles/rails_5.1.gemfile
 
 notifications:
