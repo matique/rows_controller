@@ -4,10 +4,9 @@ class Order < ApplicationRecord
 
  protected
   def err
-    return true  unless name == 'error'
-
-    self.errors.add :base, 'panic'
-    return false
+    if name == 'error'
+      throw :abort
+    end
   end
 
 end

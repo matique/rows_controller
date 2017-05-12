@@ -70,6 +70,12 @@ be changed by e.g.:
 The model class can be retrieved with the helper model_class.
 
 
+Rails 5
+-------
+
+This gem is intended for Rails 5.
+Older Rails versions may use "gem 'rows_controller', '= 2.0.8'".
+
 Rails 4
 -------
 
