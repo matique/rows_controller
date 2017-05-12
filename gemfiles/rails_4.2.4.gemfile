@@ -10,4 +10,4 @@ group :development, :test do
   gem "observr"
 end
 
-gemspec :path => "../"
+gemspec path: "../"

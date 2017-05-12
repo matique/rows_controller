@@ -62,7 +62,7 @@ module Rows::Resources
   # Never trust parameters from the scary internet, only allow the white list through.
   def resource_params
     permits = resource_whitelist
-    if Rails::VERSION::MAJOR > 3
+    if params.respond_to?(:require)
       params.require(model_symbol).permit(permits)
     else
       pars = params[model_symbol] || {}

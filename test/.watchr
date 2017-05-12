@@ -24,7 +24,7 @@ end
 
 def run_all_tests
   puts "\n#{HH} Running all tests #{HH}\n"
-  %w{test spec}.each { |dir| run "rake #{dir} RAILS_ENV=test"  if  File.exists?(dir) }
+  %w{test spec}.each { |dir| run "rails #{dir}"  if  File.exists?(dir) }
 end
 
 def run_matching_files(base)
