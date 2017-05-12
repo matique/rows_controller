@@ -4,6 +4,9 @@
 #  command_name 'Minitest'
 #end
 
+# Configure Rails Environment
+ENV["RAILS_ENV"] = "test"
+
 
 rails_version = `rails -v`.strip
 aster = '#' * 20
