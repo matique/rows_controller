@@ -8,6 +8,7 @@ gem "slim"
 group :development, :test do
   gem "appraisal"
   gem "observr"
+  gem "rails-controller-testing"
 end
 
-gemspec :path => "../"
+gemspec path: "../"

@@ -62,3 +62,17 @@ ENV['BUNDLE_GEMFILE'] may help?
   ENV['BUNDLE_GEMFILE'] ||= gemfile       # notice ||
 
 wwtd --local OK
+
+Appraisal
+---------
+https://github.com/thoughtbot/appraisal
+
+gem "appraisal"
+
+appraise 'rails-5.1' do
+  gem 'rails', '~> 5.1'
+end
+
+$ appraisal install
+$ appraisal rails-5.1 rake test
+$ appraisal rake test

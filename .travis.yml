@@ -5,11 +5,11 @@ rvm:
   - 2.2.3
   - 2.4.1
 
-gemfile:
 #  - gemfiles/rails_3.2.gemfile   #running at home but not on travis-ci
+gemfile:
   - gemfiles/rails_4.2.0.gemfile
   - gemfiles/rails_4.2.4.gemfile
-  - gemfiles/rails_5.1.0.gemfile
+  - gemfiles/rails_5.1.gemfile
 
 notifications:
   email: false

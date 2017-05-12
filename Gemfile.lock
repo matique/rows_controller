@@ -125,7 +125,6 @@ PLATFORMS
 
 DEPENDENCIES
   appraisal
-  minitest (~> 5.10, != 5.10.2)
   observr
   rails
   rails-controller-testing

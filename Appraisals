@@ -12,6 +12,7 @@ appraise 'rails-4.2.4' do
   gem 'rails', '4.2.4'
 end
 
-appraise 'rails-5.1.0' do
+appraise 'rails-5.1' do
   gem 'rails', '~> 5.1'
+  gem 'minitest', '~> 5.10', '!= 5.10.2'
 end
