@@ -38,7 +38,7 @@ module Rows::Resources
 
   def resource_update
     if Rails::VERSION::MAJOR >= 4
-      return true  unless params[model_symbol]
+#      return true  unless params[model_symbol]
       resource.update(resource_params)
     else
       resource.update_attributes(resource_params)
