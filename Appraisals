@@ -14,9 +14,4 @@
 
 appraise 'rails-5.1' do
   gem 'rails', '~> 5.1'
-
-  group :development, :test do
-    gem 'rails-controller-testing'
-    gem 'minitest', '~> 5.10', '!= 5.10.2'
-  end
 end

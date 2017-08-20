@@ -3,13 +3,15 @@
 source "https://rubygems.org"
 
 gem "rails", "~> 5.1"
-gem "slim"
 
-group :development, :test do
-  gem "appraisal"
-  gem "observr"
+group :test do
   gem "rails-controller-testing"
-  gem "minitest", "~> 5.10", "!= 5.10.2"
+  gem "observr"
+  gem "simplecov", require: false
+  gem "minitest"
+  gem "capybara"
+  gem "sqlite3"
+  gem "slim"
 end
 
 gemspec path: "../"

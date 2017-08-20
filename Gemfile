@@ -3,12 +3,13 @@ source 'https://rubygems.org'
 gemspec
 
 gem 'rails'
-gem 'slim'
 
-group :development, :test do
-  gem "appraisal"
+group :test do
+  gem 'rails-controller-testing'
   gem 'observr'
-  gem "rails-controller-testing"
-  gem "minitest", "~> 5.10", "!= 5.10.2"
-#  gem 'simplecov', require: false
+  gem 'simplecov', require: false
+  gem 'minitest'
+  gem 'capybara'
+  gem 'sqlite3'
+  gem 'slim'
 end
