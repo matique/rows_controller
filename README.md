@@ -131,4 +131,4 @@ Look for:
 - inherited_resources
 - decent_exposure
 
-Copyright (c) 2009-2015 [Dittmar Krall], released under the MIT license.
+Copyright (c) 2009-2017 [Dittmar Krall], released under the MIT license.
