@@ -16,7 +16,8 @@ end
 
 def run_it(type, file)
   case type
-  when 'test';  run %Q{ruby -I"lib:test" -rubygems #{file}}
+#  when 'test';  run %Q{ruby -I"lib:test" -rubygems #{file}}
+  when 'test';  run %Q{rails test #{file}}
   when 'spec';  run %Q{rspec -X #{file}}
   else;         puts "#{H} unknown type: #{type}, file: #{file}"
   end
@@ -24,6 +25,7 @@ end
 
 def run_all_tests
   puts "\n#{HH} Running all tests #{HH}\n"
+#  system "spring stop"
   %w{test spec}.each { |dir| run "rails #{dir}"  if  File.exists?(dir) }
 end
 
@@ -38,12 +40,16 @@ end
 %w{test spec}.each { |type|
   watch("#{type}/#{type}_helper\.rb") { run_all_tests }
   watch("#{type}/.*/*_#{type}\.rb")   { |match| run_it type, match[0] }
+  watch("#{type}/data/(.*)\.rb") { |match|
+    m1 = match[1]
+    run_matching_files("#{type}/#{m1}/#{m1}_#{type}.rb")
+  }
 }
-#%w{rb erb haml slim}.each { |type|
-#  watch("app/.*/.*\.#{type}") { |m|
-#    run_matching_files("#{m[0].split('/').at(2).split('.').first}")
-#  }
-#}
+%w{rb erb haml slim}.each { |type|
+  watch("app/.*/(.*)\.#{type}") { |match|
+    run_matching_files(match[1])
+  }
+}
 Dir['**/*.rb'].find_all{ |x| !(x =~ /_test\.rb$/) }.each { |name|
   watch(name)  { run_all_tests }
 }
