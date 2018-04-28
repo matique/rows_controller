@@ -7,6 +7,13 @@ class OrdersControllerTest < ActionController::TestCase
 
   def setup
     @order = orders(:one)
+    OrdersController.model_class Order  # reset
+  end
+
+  test 'self.model_class assignment' do
+    test_model_class Integer, Integer
+    test_model_class "String", String
+    test_model_class "ActiveSupport::TimeWithZone", ActiveSupport::TimeWithZone
   end
 
   %i{ index new }.each do |action|
@@ -78,6 +85,12 @@ class OrdersControllerTest < ActionController::TestCase
     post :create, params: { id: @order.id, order: {name: 'error'} }
     assert_response :success
     assert_template 'rows/new'
+  end
+
+ private
+  def test_model_class(asgn, klass)
+    OrdersController.model_class asgn
+    assert_equal klass, OrdersController.model_class
   end
 
 end

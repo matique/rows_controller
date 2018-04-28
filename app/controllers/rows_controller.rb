@@ -14,7 +14,10 @@ class RowsController < ApplicationController
 
   def self.model_class(model_class = nil)
     @_model_class ||= nil
-    @_model_class = model_class  unless model_class.nil?
+    unless model_class.nil?
+      @_model_class = model_class
+      @_model_class = model_class.constantize  if model_class.is_a?(String)
+    end
     @_model_class
   end
 
