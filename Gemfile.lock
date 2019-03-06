@@ -165,7 +165,7 @@ DEPENDENCIES
   rows_controller!
   simplecov
   slim
-  sqlite3 (~> 1.3.6)
+  sqlite3 (!= 1.4.0)
 
 BUNDLED WITH
    1.17.2

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Rows::Resources
 
   def set_resources(rows = nil)
@@ -52,14 +54,17 @@ module Rows::Resources
   def resource_columns
     return model_class.column_headers  if model_class.respond_to?(:column_headers)
     return ['to_s']  unless model_class.respond_to?(:content_columns)
-    ['id'] + model_class.content_columns.collect{|c| c.name }
+
+#    ['id'] + model_class.content_columns.collect { |c| c.name }
+    ['id'] + model_class.content_columns.collect(&:name)
   end
 
   def resource_whitelist
     raise "RowsController requires private method 'resource_whitelist' in controller <#{params[:controller]}>"
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
+  # Never trust parameters from the scary internet, only allow the
+  # white list through.
   def resource_params
     permits = resource_whitelist
     if params.respond_to?(:require)
@@ -68,7 +73,7 @@ module Rows::Resources
       pars = params[model_symbol] || {}
       pars.keys.each { |x|
 	x = x.to_sym
-	unless permits.include?(x) || permits.include?({x => []})
+        unless permits.include?(x) || permits.include?({ x => [] })
 	  pars.delete(x)
 	  p "** WARNING: model <#{model_name}> dropping params <#{x}>"
 	end

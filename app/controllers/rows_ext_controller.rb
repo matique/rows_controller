@@ -1,10 +1,13 @@
+# frozen_string_literal: true
+
+# Extensions
 class RowsExtController < RowsController
 
   def copy
     set_resource resource.dup
     resource.id = nil
     respond_to do |format|
-      format.html { render :action => :new }
+      format.html { render action: :new }
     end
   end
 

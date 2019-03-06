@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rows/resources'
 require 'rows/model'
 require 'rows/utils'
@@ -56,7 +58,8 @@ class RowsController < ApplicationController
   def destroy
     set_resource
     resource_destroy
-    flash[:notice] = t('ui.destroyed', model: model_name).html_safe  unless request.xhr?
+    msg = t('ui.destroyed', model: model_name).html_safe
+    flash[:notice] = msg  unless request.xhr?
     respond_to do |format|
       format.html { redirect_to action: :index }
       format.js   { render template: 'rows/destroy', layout: false }
@@ -67,7 +70,7 @@ class RowsController < ApplicationController
  private
   def create_update(which, msg)
     respond_to do |format|
-      if self.send(which)
+      if send(which)
 	format.html {
 	  flash[:notice] = t(msg, scope: :ui, model: model_name,
 		  default: "%{model} was successfully #{msg}.").html_safe

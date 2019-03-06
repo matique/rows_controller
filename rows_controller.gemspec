@@ -1,6 +1,6 @@
-lib = File.expand_path('../lib', __FILE__)
+lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "rows/version"
+require 'rows/version'
 
 Gem::Specification.new do |s|
   s.name        = 'rows_controller'
@@ -14,12 +14,12 @@ Gem::Specification.new do |s|
   s.license     = 'MIT'
   s.platform    = Gem::Platform::RUBY
 
-  s.files = Dir["{app,lib}/**/*", "MIT-LICENSE", "README.md"]
+  s.files = Dir['{app,lib}/**/*', 'MIT-LICENSE', 'README.md']
   s.test_files    = s.files.grep(%r{^(test|spec|features)/})
   s.require_paths = ['lib']
 
-  s.add_development_dependency 'bundler', '~> 1'
-  s.add_development_dependency 'rake', '~> 12'
   s.add_development_dependency 'appraisal', '~> 2'
+  s.add_development_dependency 'bundler'
+  s.add_development_dependency 'rake', '~> 12'
 #  s.add_development_dependency 'combustion', '~> 0'
 end
