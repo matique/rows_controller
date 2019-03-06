@@ -155,7 +155,7 @@ PLATFORMS
 
 DEPENDENCIES
   appraisal (~> 2)
-  bundler (~> 1)
+  bundler
   capybara
   minitest
   observr
