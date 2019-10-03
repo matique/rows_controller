@@ -26,8 +26,8 @@ use:
 
 I.e. RowsController defines all the usual methods (index, show, edit,...).
 
-The methods may be redefined in OrdersController overwriting the
-methods from RowsController.
+The methods may be redefined in OrdersController
+(overwrites methods from RowsController).
 
 Low level methods like 'resources' may be redefined as well.
 An example:
@@ -69,6 +69,12 @@ be changed by e.g.:
 
 The model class can be retrieved with the helper model_class.
 
+
+Rails 6
+-------
+
+This gem is intended for Rails 6.
+Older Rails versions may use "gem 'rows_controller', '= 2.2.2'".
 
 Rails 5
 -------
@@ -118,7 +124,7 @@ As usual:
 
     gem 'rows_controller' # in Gemfile
     bundle
-    ( cd spec/dummy; rake db:create db:migrate )
+    ( cd spec/dummy; rake db:create db:migrate ) # not required for Rails 6
     rake
 
 
@@ -131,4 +137,4 @@ Look for:
 - inherited_resources
 - decent_exposure
 
-Copyright (c) 2009-2017 [Dittmar Krall], released under the MIT license.
+Copyright (c) 2009-2019 [Dittmar Krall], released under the MIT license.
