@@ -25,11 +25,11 @@ AllCops:
   Exclude:
 #    - 'db/**/*'
 #    - 'config/**/*'
-    - 'script/**/*'
-    - 'bin/{rails,rake}'
+#    - 'script/**/*'
+#    - 'bin/{rails,rake}'
     - 'gemfiles/*'
-    - 'lib/{rows_controller}.rb'
-    - 'lib/rows/{model,resources,utils}.rb'
+#    - 'lib/{rows_controller}.rb'
+#    - 'lib/rows/{model,resources,utils}.rb'
     - 'test/**/*'
 #    - !ruby/regexp /old_and_unused\.rb$/
 
@@ -49,13 +49,18 @@ Layout/EmptyLinesAroundBlockBody:
   Enabled: false
 Layout/EmptyLinesAroundClassBody:
   Enabled: false
+Layout/EmptyLinesAroundModuleBody:
+  Enabled: false
 Layout/ExtraSpacing:
   Enabled: false
-Layout/IndentArray:
+Layout/IndentFirstArrayElement:
   Enabled: false
 Layout/IndentationWidth:
   Enabled: false
 Layout/Tab:
+  Enabled: false
+
+Naming/MemoizedInstanceVariableName:
   Enabled: false
 
 Security/YAMLLoad:
@@ -63,13 +68,12 @@ Security/YAMLLoad:
 
 Style/BlockDelimiters:
   Enabled: false
+Style/ClassAndModuleChildren:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
 Style/FrozenStringLiteralComment:
-  Exclude:
-    - 'test/**/*.rb'
+  Enabled: false
 Style/WhenThen:
   Exclude:
     - '.watchr'
-
-
-
-

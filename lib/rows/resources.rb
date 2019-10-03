@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 module Rows::Resources
 
   def set_resources(rows = nil)
@@ -72,11 +70,11 @@ module Rows::Resources
     else
       pars = params[model_symbol] || {}
       pars.keys.each { |x|
-	x = x.to_sym
+        x = x.to_sym
         unless permits.include?(x) || permits.include?({ x => [] })
-	  pars.delete(x)
-	  p "** WARNING: model <#{model_name}> dropping params <#{x}>"
-	end
+          pars.delete(x)
+          p "** WARNING: model <#{model_name}> dropping params <#{x}>"
+        end
       }
       pars
     end
