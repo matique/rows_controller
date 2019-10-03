@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 gemspec
 
-gem 'rails'
+gem 'rails', '~> 5.2'
 
 group :test do
   gem 'rails-controller-testing'
@@ -9,7 +9,6 @@ group :test do
   gem 'simplecov', require: false
   gem 'minitest'
   gem 'capybara'
-  gem 'sqlite3', '!= 1.4.0'
-#  gem 'sqlite3'
+  gem 'sqlite3'
   gem 'slim'
 end
