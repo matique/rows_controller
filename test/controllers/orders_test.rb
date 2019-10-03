@@ -75,16 +75,14 @@ class OrdersControllerTest < ActionController::TestCase
     assert_redirected_to(action: :index)
   end
 
-  test 'should not update' do
+  test 'should not update; missing OK' do
     put :update, params: { id: @order.id, order: {name: 'error'} }
-    assert_response :success
-    assert_template 'rows/edit'
+    assert_redirected_to(action: :edit, id: @order.id)
   end
 
-  test 'should not create' do
+  test 'should not create; missing OK' do
     post :create, params: { id: @order.id, order: {name: 'error'} }
-    assert_response :success
-    assert_template 'rows/new'
+    assert_response :redirect
   end
 
  private

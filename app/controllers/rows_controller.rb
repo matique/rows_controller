@@ -77,7 +77,7 @@ class RowsController < ApplicationController
 	  if params[:commit] == 'OK'
 	    redirect_to action: :index
 	  else
-	    redirect_to action: 'edit', id: resource.id
+            redirect_to action: 'edit', id: resource.id
 	  end
 	}
 	format.json { render action: 'show',

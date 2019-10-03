@@ -49,7 +49,7 @@ class Order::ItemsControllerTest < ActionController::TestCase
 
   test "should update order_item" do
     put :update, params: { id: @order_item,
-		order_item: { price: @order_item.price } }
+                order_item: { price: @order_item.price } }
 ##    assert_redirected_to order_item_path(assigns(:order_item))
     assert_redirected_to edit_order_item_path(assigns(:order_item))
   end
@@ -61,4 +61,5 @@ class Order::ItemsControllerTest < ActionController::TestCase
 
     assert_redirected_to order_items_path
   end
+
 end
