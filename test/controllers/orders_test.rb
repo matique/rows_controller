@@ -77,12 +77,14 @@ class OrdersControllerTest < ActionController::TestCase
 
   test 'should not update; missing OK' do
     put :update, params: { id: @order.id, order: {name: 'error'} }
-    assert_redirected_to(action: :edit, id: @order.id)
+    assert_response :success
+    assert_template 'rows/edit'
   end
 
   test 'should not create; missing OK' do
     post :create, params: { id: @order.id, order: {name: 'error'} }
-    assert_response :redirect
+    assert_response :success
+    assert_template 'shared/_error_explanation'
   end
 
  private

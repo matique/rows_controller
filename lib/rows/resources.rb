@@ -53,7 +53,6 @@ module Rows::Resources
     return model_class.column_headers  if model_class.respond_to?(:column_headers)
     return ['to_s']  unless model_class.respond_to?(:content_columns)
 
-#    ['id'] + model_class.content_columns.collect { |c| c.name }
     ['id'] + model_class.content_columns.collect(&:name)
   end
 
