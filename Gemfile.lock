@@ -139,7 +139,7 @@ GEM
       method_source
       rake (>= 0.8.7)
       thor (>= 0.20.3, < 2.0)
-    rake (12.3.3)
+    rake (13.0.0)
     regexp_parser (1.6.0)
     simplecov (0.17.1)
       docile (~> 1.1)
@@ -182,7 +182,7 @@ DEPENDENCIES
   observr
   rails
   rails-controller-testing
-  rake (~> 12)
+  rake
   rows_controller!
   simplecov
   slim
