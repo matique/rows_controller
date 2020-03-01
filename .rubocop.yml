@@ -1,7 +1,3 @@
-# inherit_from: .rubocop_todo.yml
-
-# inherit_from: .rubocop_todo.yml
-
 # rubocop --auto-gen-config
 # rubocop
 # rubocop:disable all
@@ -10,26 +6,12 @@
 
 AllCops:
   Include:
-#    - 'app/**/*.rb'
-#    - 'bin/**/*.rb'
-#    - 'config/**/*.rb'
-#    - 'db/**/*.rb'
     - 'lib/**/*.rb'
     - 'test/**/*_test.rb'
     - '**/*.gemfile'
-#    - '**/*.gemspec'
-#    - '**/*.rake'
-#    - '**/*.ru'
-#    - '**/Gemfile'
-#    - '**/Rakefile'
+
   Exclude:
-#    - 'db/**/*'
-#    - 'config/**/*'
-#    - 'script/**/*'
-#    - 'bin/{rails,rake}'
     - 'gemfiles/*'
-#    - 'lib/{rows_controller}.rb'
-#    - 'lib/rows/{model,resources,utils}.rb'
     - 'test/**/*'
 #    - !ruby/regexp /old_and_unused\.rb$/
 
@@ -39,33 +21,34 @@ Bundler/OrderedGems:
 
 Layout/AccessModifierIndentation:
   Enabled: false
-Layout/AlignArray:
-  Enabled: false
 Layout/CommentIndentation:
   Enabled: false
+Layout/EmptyLines:
+  Enabled: false
 Layout/EmptyLinesAroundAccessModifier:
-  Enabled: false
-Layout/EmptyLinesAroundBlockBody:
-  Enabled: false
-Layout/EmptyLinesAroundClassBody:
   Enabled: false
 Layout/EmptyLinesAroundModuleBody:
   Enabled: false
 Layout/ExtraSpacing:
   Enabled: false
-Layout/IndentFirstArrayElement:
-  Enabled: false
-Layout/IndentationWidth:
-  Enabled: false
-Layout/Tab:
+Layout/LineLength:
   Enabled: false
 
+Naming/AccessorMethodName:
+  Enabled: false
 Naming/MemoizedInstanceVariableName:
+  Enabled: false
+Naming/MethodParameterName:
   Enabled: false
 
 Security/YAMLLoad:
   Enabled: false
-
+Style/HashEachMethods:
+  Enabled: false
+Style/HashTransformKeys:
+  Enabled: false
+Style/HashTransformValues:
+  Enabled: false
 Style/BlockDelimiters:
   Enabled: false
 Style/ClassAndModuleChildren:
