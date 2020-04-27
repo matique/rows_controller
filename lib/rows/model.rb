@@ -1,5 +1,6 @@
-module Rows::Model
+# frozen_string_literal: true
 
+module Rows::Model
   def model_class
     @_model_class ||= self.class.model_class ||
                       params[:controller].singularize.camelize.constantize
@@ -26,5 +27,4 @@ module Rows::Model
   def model_symbol_plural
     @_model_symbol_plural ||= model_symbol.pluralize
   end
-
 end

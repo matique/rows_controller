@@ -1,3 +1,5 @@
+# rubocop: disable all
+
 require 'rows/engine'
 
 module Rows

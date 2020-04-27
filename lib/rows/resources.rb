@@ -1,5 +1,6 @@
-module Rows::Resources
+# frozen_string_literal: true
 
+module Rows::Resources
   def set_resources(rows = nil)
     rows ||= model_class.all
     instance_variable_set("@#{model_symbol_plural}", rows)
@@ -21,8 +22,8 @@ module Rows::Resources
   end
 
  private
-# low level resource methods
-# can be monkey patched
+  # low level resource methods
+  # can be monkey patched
   def resource_new
     if params[model_symbol]
       set_resource model_class.new(resource_params)
@@ -38,7 +39,7 @@ module Rows::Resources
 
   def resource_update
     if Rails::VERSION::MAJOR >= 4
-#      return true  unless params[model_symbol]
+      #      return true  unless params[model_symbol]
       resource.update(resource_params)
     else
       resource.update_attributes(resource_params)
@@ -50,8 +51,8 @@ module Rows::Resources
   end
 
   def resource_columns
-    return model_class.column_headers  if model_class.respond_to?(:column_headers)
-    return ['to_s']  unless model_class.respond_to?(:content_columns)
+    return model_class.column_headers if model_class.respond_to?(:column_headers)
+    return ['to_s'] unless model_class.respond_to?(:content_columns)
 
     ['id'] + model_class.content_columns.collect(&:name)
   end
@@ -70,7 +71,7 @@ module Rows::Resources
       pars = params[model_symbol] || {}
       pars.keys.each { |x|
         x = x.to_sym
-        unless permits.include?(x) || permits.include?({ x => [] })
+        unless permits.include?(x) || permits.include?({x => []})
           pars.delete(x)
           p "** WARNING: model <#{model_name}> dropping params <#{x}>"
         end
@@ -78,5 +79,4 @@ module Rows::Resources
       pars
     end
   end
-
 end
