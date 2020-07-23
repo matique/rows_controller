@@ -185,14 +185,14 @@ GEM
     websocket-extensions (0.1.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.3.1)
+    zeitwerk (2.4.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   appraisal (~> 2)
-  bundler (~> 1)
+  bundler
   capybara
   combustion (~> 1.1)
   minitest (~> 5)
@@ -207,4 +207,4 @@ DEPENDENCIES
   sqlite3 (~> 1)
 
 BUNDLED WITH
-   1.17.3
+   2.1.4

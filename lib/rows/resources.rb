@@ -69,7 +69,8 @@ module Rows::Resources
       params.require(model_symbol).permit(permits)
     else
       pars = params[model_symbol] || {}
-      pars.keys.each { |x|
+      # pars.keys.each { |x|
+      pars.each_key { |x|
         x = x.to_sym
         unless permits.include?(x) || permits.include?({x => []})
           pars.delete(x)
