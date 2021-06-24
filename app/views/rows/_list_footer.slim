@@ -1,5 +1,5 @@
 / Default list footer presenting a 'Create' button linked to action new.
 / May be overwriten for e.g. pagination
 
-div.list-footer
+.list-footer
   = link_to t('button.create').html_safe, url_for(action: :new), class: 'button'

@@ -20,7 +20,7 @@ module Rows::Model
     end
 
     def model_symbol
-      @_model_symbol ||= model_name.underscore.gsub(%r{/}, '_')
+      @_model_symbol ||= model_name.underscore.tr('/', '_')
     end
   end
 

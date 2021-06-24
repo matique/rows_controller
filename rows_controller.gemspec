@@ -10,19 +10,20 @@ Gem::Specification.new do |s|
   s.authors     = ['Dittmar Krall']
   s.email       = ['dittmar.krall@matique.de']
   s.homepage    = 'http://matique.de'
-
   s.license     = 'MIT'
   s.platform    = Gem::Platform::RUBY
+
+  s.metadata['source_code_uri'] = 'https://github.com/matique/rows_controller'
 
   s.files = Dir['{app,lib}/**/*', 'MIT-LICENSE', 'README.md']
   s.test_files    = s.files.grep(%r{^(test|spec|features)/})
   s.require_paths = ['lib']
 
   s.add_development_dependency 'bundler'
-  s.add_development_dependency 'rake', '~> 13'
-  s.add_development_dependency 'appraisal', '~> 2'
-  s.add_development_dependency 'combustion', '~> 1.1'
+  s.add_development_dependency 'rake'
+  s.add_development_dependency 'appraisal'
+  s.add_development_dependency 'combustion'
 
-  s.add_development_dependency 'minitest', '~> 5'
-  s.add_development_dependency 'sqlite3', '~> 1'
+  s.add_development_dependency 'minitest'
+  s.add_development_dependency 'sqlite3'
 end
