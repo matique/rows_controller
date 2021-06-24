@@ -3,7 +3,7 @@
 module Rows::Model
   def model_class
     @_model_class ||= self.class.model_class ||
-                      params[:controller].singularize.camelize.constantize
+                      Kernel.const_get(params[:controller].classify)
   end
 
   if Rails::VERSION::MAJOR > 3
