@@ -21,7 +21,8 @@ module Rows::Resources
     @row ||= set_resource
   end
 
- private
+  private
+
   # low level resource methods
   # can be monkey patched
   def resource_new
@@ -52,9 +53,9 @@ module Rows::Resources
 
   def resource_columns
     return model_class.column_headers if model_class.respond_to?(:column_headers)
-    return ['to_s'] unless model_class.respond_to?(:content_columns)
+    return ["to_s"] unless model_class.respond_to?(:content_columns)
 
-    ['id'] + model_class.content_columns.collect(&:name)
+    ["id"] + model_class.content_columns.collect(&:name)
   end
 
   def resource_whitelist

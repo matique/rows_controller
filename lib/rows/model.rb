@@ -3,7 +3,7 @@
 module Rows::Model
   def model_class
     @_model_class ||= self.class.model_class ||
-                      Kernel.const_get(params[:controller].classify)
+      Kernel.const_get(params[:controller].classify)
   end
 
   if Rails::VERSION::MAJOR > 3
@@ -20,7 +20,7 @@ module Rows::Model
     end
 
     def model_symbol
-      @_model_symbol ||= model_name.underscore.tr('/', '_')
+      @_model_symbol ||= model_name.underscore.tr("/", "_")
     end
   end
 

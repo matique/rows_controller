@@ -1,8 +1,7 @@
 class Order::ItemsController < RowsController
+  private
 
- private
   def resource_whitelist
-    %i{ price }
+    %i[price]
   end
-
 end

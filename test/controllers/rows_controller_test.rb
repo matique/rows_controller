@@ -1,44 +1,44 @@
-require 'test_helper'
+require "test_helper"
 
 class RowsControllerTest < ActionController::TestCase
-  test 'respond resource' do
-    test_response %i{ resource resources set_resource set_resources }
+  test "respond resource" do
+    test_response %i[resource resources set_resource set_resources]
   end
 
-  test 'respond model' do
-    test_response %i{ model_class }
+  test "respond model" do
+    test_response %i[model_class]
   end
 
-  test 'respond resource format' do
-    test_response %i{ resource_format }
+  test "respond resource format" do
+    test_response %i[resource_format]
   end
 
-
-  test 'respond action' do
-    test_response %i{ index new create show edit update destroy }
+  test "respond action" do
+    test_response %i[index new create show edit update destroy]
   end
 
-  test 'coverage resource_format' do
-    assert_equal 'abc', @controller.send(:resource_format, 'abc')
+  test "coverage resource_format" do
+    assert_equal "abc", @controller.send(:resource_format, "abc")
   end
 
-  test 'available public methods' do
-    list = %i{create destroy edit index new show update}
+  test "available public methods" do
+    list = %i[create destroy edit index new show update]
     assert_equal list.sort, @controller.public_methods(false).sort
   end
 
-  test 'exposed resource private methods' do
-    list = %i{resource resource_format resources set_resource set_resources}
-    assert_equal list.sort, filter(@controller.public_methods, 'resource')
+  test "exposed resource private methods" do
+    list = %i[resource resource_format resources set_resource set_resources]
+    assert_equal list.sort, filter(@controller.public_methods, "resource")
   end
 
-  test 'exposed model_ private methods' do
-    list = %i{model_class model_name model_symbol model_symbol_plural}
-    got = filter(@controller.public_methods, 'model_')
+  test "exposed model_ private methods" do
+    list = %i[model_class model_name model_symbol model_symbol_plural]
+    got = filter(@controller.public_methods, "model_")
     assert_equal list.sort, (list & got).sort
   end
 
- private
+  private
+
   def filter(x, criteria)
     x.map(&:to_s).sort.find_all { |y| y =~ /#{criteria}/ }.map(&:to_sym).sort
   end
@@ -48,5 +48,4 @@ class RowsControllerTest < ActionController::TestCase
       assert @controller.respond_to?(x), "controller don't respond to #{x}"
     }
   end
-
 end

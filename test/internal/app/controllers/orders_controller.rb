@@ -1,8 +1,7 @@
 class OrdersController < RowsExtController
+  private
 
- private
   def resource_whitelist
-    %i{ name }
+    %i[name]
   end
-
 end
