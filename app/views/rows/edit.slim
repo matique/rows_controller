@@ -13,6 +13,6 @@ fieldset class="wide mask" id=model_symbol
 
   - @multipart ||= false
   /"/#{controller_name}/update/#{@row.id}"
-  = form_for resource, url: "/#{controller_name}/#{@row.id}", html: {multipart: @multipart} do |f|
+  = form_for resource, url: "/#{controller_name}/#{@row.id}", html: { multipart: @multipart } do |f|
     = render 'form', f: f
     = render '/rows/submit', right: %w[update OK]
