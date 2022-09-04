@@ -5,6 +5,7 @@ require "rows/model"
 require "rows/utils"
 
 class RowsController < ApplicationController
+  # before_action :set_resource, only: [:show, :edit, :update, :destroy]
   helper_method :set_resource, :set_resources, :resource, :resources
   helper_method :resource_columns, :resource_format
   helper_method :model_class, :model_name
@@ -86,11 +87,10 @@ class RowsController < ApplicationController
             status: msg == "created" ? :created : :ok,
             location: resource
         }
-      else ## failed
+      else # failed
         format.html { render action: msg == "created" ? :new : :edit }
         format.json {
-          render json: resource.errors,
-            status: :unprocessable_entity
+          render json: resource.errors, status: :unprocessable_entity
         }
       end
     end
