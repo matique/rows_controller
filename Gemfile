@@ -4,10 +4,11 @@ gemspec
 gem "rails"
 
 group :test do
-  gem "observr"
-  gem "standard", require: false
-  gem "simplecov", require: false
-  gem "rails-controller-testing"
   gem "capybara"
+  gem "observr"
+  gem "rails-controller-testing"
+  gem "ricecream"
   gem "slim"
+  gem "simplecov", require: false
+  gem "standard", require: false
 end

@@ -1,8 +1,6 @@
 Just notes for me.
 
-rails plugin new rows --full
-
-mv rows rows_controller
+rails plugin new rows_controller --full
 
 cd rows_controller
 med NOTES
@@ -25,10 +23,6 @@ wwtd --local
 
 
 -----------------------------------------------------
-ruby -v; rails -v
-
-----------
-git clone rows3 rows4
 
 cd rows4
 cd test/dummy
@@ -43,7 +37,6 @@ git mv test/dummy test/dummy3
 med Rakefile
 med test/test_helper.rb
 rake
-
 
 --------
 Problem?

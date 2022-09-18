@@ -4,7 +4,6 @@
 - if resources.length.positive?
   h1 = t('ui.listing', model: model_name).html_safe
   = render '/rows/list', resources: resources, columns: resource_columns
-  /= render '/rows/list', resources:, columns: resource_columns
 - else
   h1 = t('ui.empty_list', model: model_name).html_safe
 

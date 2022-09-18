@@ -5,8 +5,9 @@ require "rows/model"
 require "rows/utils"
 
 class RowsController < ApplicationController
-  # before_action :set_resource, only: [:show, :edit, :update, :destroy]
-  helper_method :set_resource, :set_resources, :resource, :resources
+  before_action :set_resource, only: %i[show edit update destroy]
+
+  helper_method :resource, :resources
   helper_method :resource_columns, :resource_format
   helper_method :model_class, :model_name
   helper_method :model_symbol, :model_symbol_plural
@@ -16,83 +17,69 @@ class RowsController < ApplicationController
   include Rows::Utils
 
   def self.model_class(model_class = nil)
-    @_model_class ||= nil
-    unless model_class.nil?
-      @_model_class = model_class
-      @_model_class = model_class.constantize if model_class.is_a?(String)
-    end
-    @_model_class
+    return @_model_class if model_class.nil?
+
+    @_model_class = model_class
   end
 
-  # GET /:resources[.json]
   def index
-    set_resources
+    rows = model_class.all
+    instance_variable_set("@#{model_symbol_plural}", rows) if rows
+    @_resources = rows
   end
 
-  # GET /:resource/:id[.json]
   def show
-    set_resource
   end
 
-  # GET /:resource/new
   def new
-    resource_new
+    @_resource = model_class.new
+    instance_variable_set("@#{model_symbol}", resource) if resource
   end
 
-  # GET /:resource/:id/edit
   def edit
-    set_resource
   end
 
-  # POST /:resources[.json]
   def create
-    create_update(:resource_create, "created")
+    @_resource = model_class.new(resource_params)
+    if resource.save
+      flash[:notice] = t("ui.created", model: model_name)
+      respond_to do |format|
+        format.html { redirect_to action: :index }
+        format.turbo_stream
+      end
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
-  # PATCH/PUT /:resources/:id[.json]
   def update
-    set_resource
-    create_update(:resource_update, "updated")
+    if resource.update(resource_params)
+      flash[:notice] = t("ui.update", model: model_name)
+      respond_to do |format|
+        format.html { redirect_to action: :index }
+        format.turbo_stream
+      end
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
-  # DELETE /:resources/:id[.json]
   def destroy
-    set_resource
-    resource_destroy
-    msg = t("ui.destroyed", model: model_name).html_safe
+    resource.destroy
+    msg = t("ui.destroyed", model: model_name)
     flash[:notice] = msg unless request.xhr?
     respond_to do |format|
       format.html { redirect_to action: :index }
-      format.js { render template: "rows/destroy", layout: false }
-      format.json { head :no_content }
+      format.turbo_stream
     end
   end
 
   private
 
-  def create_update(which, msg)
-    respond_to do |format|
-      if send(which)
-        format.html {
-          flash[:notice] = t(msg, scope: :ui, model: model_name,
-            default: "%{model} was successfully #{msg}.").html_safe
-          if params[:commit] == "OK"
-            redirect_to action: :index
-          else
-            redirect_to action: "edit", id: resource.id
-          end
-        }
-        format.json {
-          render action: "show",
-            status: msg == "created" ? :created : :ok,
-            location: resource
-        }
-      else # failed
-        format.html { render action: msg == "created" ? :new : :edit }
-        format.json {
-          render json: resource.errors, status: :unprocessable_entity
-        }
-      end
-    end
+  def set_resource
+    id = params[:id]
+    @_resource = model_class.find_by(id: id) if id
+    instance_variable_set("@#{model_symbol}", resource) if resource
+    @row = resource
   end
 end

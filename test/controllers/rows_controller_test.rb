@@ -2,7 +2,7 @@ require "test_helper"
 
 class RowsControllerTest < ActionController::TestCase
   test "respond resource" do
-    test_response %i[resource resources set_resource set_resources]
+    test_response %i[resource resources]
   end
 
   test "respond model" do
@@ -27,7 +27,7 @@ class RowsControllerTest < ActionController::TestCase
   end
 
   test "exposed resource private methods" do
-    list = %i[resource resource_format resources set_resource set_resources]
+    list = %i[resource resource_format resources]
     assert_equal list.sort, filter(@controller.public_methods, "resource")
   end
 

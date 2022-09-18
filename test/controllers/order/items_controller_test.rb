@@ -3,10 +3,15 @@
 require "test_helper"
 
 class Order::ItemsControllerTest < ActionController::TestCase
-  fixtures :all
-
   def setup
     @order_item = order_items(:one)
+  end
+
+  test "simple" do
+    check :index
+    check :new
+    check :edit, {id: @order_item.id}
+    check :show, {id: @order_item.id}
   end
 
   test "checking model_..." do
@@ -17,48 +22,56 @@ class Order::ItemsControllerTest < ActionController::TestCase
     assert_equal "order_items", @controller.send(:model_symbol_plural)
   end
 
-  test "should get index" do
+  test "get index" do
     get :index
     assert_response :success
-    assert_not_nil assigns(:order_items)
+    refute_nil assigns(:order_items)
   end
 
-  test "should get new" do
+  test "get new" do
     get :new
     assert_response :success
   end
 
-  test "should create order_item" do
+  test "create order_item" do
     assert_difference("Order::Item.count") do
       post :create, params: {order_item: {price: @order_item.price}}
     end
 
-    ##    assert_redirected_to order_item_path(assigns(:order_item))
     assert_redirected_to edit_order_item_path(assigns(:order_item))
   end
 
-  test "should show order_item" do
+  test "show order_item" do
     get :show, params: {id: @order_item}
     assert_response :success
   end
 
-  test "should get edit" do
+  test "get edit" do
     get :edit, params: {id: @order_item}
     assert_response :success
   end
 
-  test "should update order_item" do
+  test "update order_item" do
     put :update, params: {id: @order_item,
                           order_item: {price: @order_item.price}}
-    ##    assert_redirected_to order_item_path(assigns(:order_item))
     assert_redirected_to edit_order_item_path(assigns(:order_item))
   end
 
-  test "should destroy order_item" do
+  test "destroy order_item" do
     assert_difference("Order::Item.count", -1) do
       delete :destroy, params: {id: @order_item}
     end
 
     assert_redirected_to order_items_path
+  end
+
+  private
+
+  def check(action, par = nil)
+    get(action) if par.nil?
+    get(action, params: par) if par
+    assert_response :success
+    assert_template "turboc/#{action}"
+    assert_match(/Order/, response.body)
   end
 end

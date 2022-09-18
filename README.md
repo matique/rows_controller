@@ -1,27 +1,30 @@
-RowsController
-==============
+# RowsController
 [![Gem Version](https://badge.fury.io/rb/rows_controller.svg)](https://badge.fury.io/rb/rows_controller)
 
 DRYs Rails controllers. Imagine replacing that @order by 'resource' in the
 controllers/views and, imho, an area for DRYing appears.
 Instead of:
 
-    class OrdersController < ApplicationController
-     .....
-     private
-      def order_params
-       params.require(:order).permit(:name)
-      end
-    end
+~~~ruby
+class OrdersController < ApplicationController
+ .....
+ private
+  def order_params
+   params.require(:order).permit(:name)
+  end
+end
+~~~
 
 use:
 
-    class OrdersController < RowsController  # < ApplicationController
-     private
-      def resource_whitelist
-       %i{ name }
-      end
-    end
+~~~ruby
+class OrdersController < RowsController  # < ApplicationController
+ private
+  def resource_whitelist
+   %i{ name }
+  end
+end
+~~~
 
 I.e. RowsController defines all the usual methods (index, show, edit,...).
 
@@ -31,16 +34,17 @@ The methods may be redefined in OrdersController
 Low level methods like 'resources' may be redefined as well.
 An example:
 
-    def resources
-      @_resources ||= model_class.paginate(page: params[:page])
-    end
+~~~ruby
+def resources
+  @_resources ||= model_class.paginate(page: params[:page])
+end
+~~~
 
 RowsController inherites from ApplicationController, i.e. all the helpers
 defined there will be available.
 
 
-Customizing of views
---------------------
+## Customizing of views
 
 RowsController initializes some instance variables used in the views
 (e.g. @order, @orders; legacy @row & @rows are still supported).
@@ -56,33 +60,42 @@ Similarly, partials '\_row\_buttons' and '\_list\_footer' may be overwritten
 as well.
 
 
-model_class
------------
+## model_class
 
 RowsController guesses the model from params[:controller]. This can
-be changed by e.g.:
+be changed by:
 
-    class OrdersController < RowsController
-      model_class Booking
-      ...
+~~~ruby
+class OrdersController < RowsController
+  model_class Booking
+  ...
+~~~
 
 The model class can be retrieved with the helper model_class.
 
 
-Rails 6
+Rails 7
 -------
+
+TURBO_STREAMS has been suppressed in "app/views/rows/_submit.slim".
+It caused some malfunction for e.g. displaying error messages.
+
+Older Rails versions may use "gem 'rows_controller', '= 3.0.5'".
+
+
+## Rails 6
 
 This gem is intended for Rails 6.
 Older Rails versions may use "gem 'rows_controller', '= 2.2.2'".
 
-Rails 5
--------
+
+## Rails 5
 
 This gem is intended for Rails 5.
 Older Rails versions may use "gem 'rows_controller', '= 2.0.8'".
 
-Rails 4
--------
+
+## Rails 4
 
 This gem is intended for Rails 4.
 Older Rails versions may use "gem 'rows_controller', '= 1.1.9'".
@@ -121,10 +134,12 @@ a class method which returns the columns defined by the ActiveRecord model.
 
 As usual:
 
-    gem 'rows_controller' # in Gemfile
-    bundle
-    ( cd spec/dummy; rake db:create db:migrate ) # not required for Rails 6
-    rake
+~~~ruby
+gem 'rows_controller' # in Gemfile
+bundle
+( cd spec/dummy; rake db:create db:migrate ) # not required for Rails 6
+rake
+~~~
 
 
 ## Credits
@@ -136,4 +151,4 @@ Look for:
 - inherited_resources
 - decent_exposure
 
-Copyright (c) 2009-2020 [Dittmar Krall], released under the MIT license.
+Copyright (c) 2009-2022 [Dittmar Krall], released under the MIT license.
