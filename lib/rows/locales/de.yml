@@ -1,25 +1,22 @@
-# under construction; see english version
 de:
 
   ui:
-    created:   '%{model} erstellt.'
-    destroyed: '%{model} gel&ouml;scht.'
-    updated:   '%{model} ge&auml;ndert.'
-
-    editing:   'Editiere %{model}'
-    listing:   'Liste %{model}'
-    new:       'Neue(r/s) %{model}'
-    showing:   'Zeige %{model}'
-
-    empty_list: 'Liste %{model} ist leer.'
+    created:   "%{model} erstellt."
+    destroyed: "%{model} gel&ouml;scht."
+    editing:   "Editiere %{model}"
+    empty_list: "Liste %{model} ist leer."
+    listing:   "Liste %{model}"
+    new:       "Neue(r/s) %{model}"
+    showing:   "Zeige %{model}"
+    updated:   "%{model} ge&auml;ndert."
 
   button:
-    ok:        OK
     back:      "Zur&uuml;ck"
     cancel:    Abbrechen
-    create:    Erstelle
-    update:    Speichern
-    delete:    'L&ouml;sche'
-    edit:      Editieren
-    show:      Zeige
     clone:     Klonen
+    create:    Erstelle
+    delete:    "L&ouml;sche"
+    edit:      Editieren
+    ok:        OK
+    show:      Zeige
+    update:    Speichern

@@ -1,24 +1,22 @@
 en:
 
   ui:
-    created:   '%{model} created.'
-    destroyed: '%{model} deleted.'
-    updated:   '%{model} updated.'
-
-    editing:   'Editing %{model}'
-    listing:   'Listing %{model}'
-    new:       'New %{model}'
-    showing:   'Showing %{model}'
-
-    empty_list: 'List %{model} is empty'
+    created:   "%{model} created."
+    destroyed: "%{model} deleted."
+    editing:   "Editing %{model}"
+    empty_list: "List %{model} is empty"
+    listing:   "Listing %{model}"
+    new:       "New %{model}"
+    showing:   "Showing %{model}"
+    updated:   "%{model} updated."
 
   button:
-    ok:        OK
     back:      Back
     cancel:    Cancel
+    clone:     Clone
     create:    Create
-    update:    Update
     delete:    Delete
     edit:      Edit
+    ok:        OK
     show:      Show
-    clone:     Clone
+    update:    Update
