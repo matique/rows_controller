@@ -71,7 +71,7 @@ class Order::ItemsControllerTest < ActionController::TestCase
     get(action) if par.nil?
     get(action, params: par) if par
     assert_response :success
-    assert_template "turboc/#{action}"
+    assert_template "rows/#{action}"
     assert_match(/Order/, response.body)
   end
 end

@@ -20,6 +20,7 @@ class RowsController < ApplicationController
     return @_model_class if model_class.nil?
 
     @_model_class = model_class
+    @_model_class = model_class.constantize  if model_class.is_a?(String)
   end
 
   def index
@@ -41,26 +42,22 @@ class RowsController < ApplicationController
 
   def create
     @_resource = model_class.new(resource_params)
+    instance_variable_set("@#{model_symbol}", resource) if resource
+    @row = @_resource
+    msg = t("ui.created", model: model_name)
     if resource.save
-      flash[:notice] = t("ui.created", model: model_name)
-      respond_to do |format|
-        format.html { redirect_to action: :index }
-        format.turbo_stream
-      end
+      succeded msg, :create
     else
-      render :new, status: :unprocessable_entity
+      failed :edit
     end
   end
 
   def update
+    msg = t("ui.update", model: model_name)
     if resource.update(resource_params)
-      flash[:notice] = t("ui.update", model: model_name)
-      respond_to do |format|
-        format.html { redirect_to action: :index }
-        format.turbo_stream
-      end
+      succeded msg, :ok
     else
-      render :edit, status: :unprocessable_entity
+      failed :edit
     end
   end
 
@@ -70,11 +67,62 @@ class RowsController < ApplicationController
     flash[:notice] = msg unless request.xhr?
     respond_to do |format|
       format.html { redirect_to action: :index }
-      format.turbo_stream
+      format.json { head :no_content }
     end
   end
 
   private
+
+  def succeded(msg, next_status)
+    respond_to do |format|
+      format.html {
+        flash[:notice] = msg
+        if params[:commit] == "OK"
+          redirect_to action: :index
+        else
+          redirect_to action: :edit, id: resource.id
+        end
+      }
+      format.json {
+        render action: :show, status: next_status, location: resource
+      }
+    end
+  end
+
+  def failed(next_action)
+    respond_to do |format|
+      format.html { render action: next_action }
+      format.json {
+        render json: resource.errors, status: :unprocessable_entity
+      }
+    end
+  end
+
+  def xcreate_update(which, msg)
+    respond_to do |format|
+      if send(which)
+        format.html {
+          flash[:notice] = t(msg, scope: :ui, model: model_name,
+            default: "%{model} was successfully #{msg}.").html_safe
+          if params[:commit] == "OK"
+            redirect_to action: :index
+          else
+            redirect_to action: "edit", id: resource.id
+          end
+        }
+        format.json {
+          render action: "show",
+            status: msg == "created" ? :created : :ok,
+            location: resource
+        }
+      else # failed
+        format.html { render action: msg == "created" ? :new : :edit }
+        format.json {
+          render json: resource.errors, status: :unprocessable_entity
+        }
+      end
+    end
+  end
 
   def set_resource
     id = params[:id]
