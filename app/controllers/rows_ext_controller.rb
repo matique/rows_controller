@@ -3,9 +3,8 @@
 # Extensions
 class RowsExtController < RowsController
   def copy
-    @_resource = model_class.find_by_id(params[:id].to_i)
+    set_resource
     @_resource = resource.dup
-#    set_resource resource.dup
     resource.id = nil
     respond_to do |format|
       format.html { render action: :new }

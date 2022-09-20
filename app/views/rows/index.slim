@@ -1,6 +1,10 @@
 / Template for RowsController (index)
 / Requires resources model_name resource_columns
 
+- p 333
+= render '/shared/show_flash'
+- p 444
+
 - if resources.length.positive?
   h1 = t('ui.listing', model: model_name).html_safe
   = render '/rows/list', resources: resources, columns: resource_columns

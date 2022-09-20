@@ -27,7 +27,7 @@ class RowsControllerTest < ActionController::TestCase
   end
 
   test "exposed resource private methods" do
-    list = %i[resource resource_format resources]
+    list = %i[resource resource_format resources set_resource set_resources]
     assert_equal list.sort, filter(@controller.public_methods, "resource")
   end
 
