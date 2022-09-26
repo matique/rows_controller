@@ -65,9 +65,6 @@ class RowsController < ApplicationController
       format.html { redirect_to action: :index }
       format.json { head :no_content }
       format.turbo_stream {}
-#      format.turbo_stream {
-#        render turbo_stream: turbo_stream.remove(dom_id(resource))
-#      }
     end
   end
 
