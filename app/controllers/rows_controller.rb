@@ -63,8 +63,11 @@ class RowsController < ApplicationController
     flash[:notice] = msg unless request.xhr?
     respond_to do |format|
       format.html { redirect_to action: :index }
-      format.js { render template: "rows/destroy", layout: false }
       format.json { head :no_content }
+      format.turbo_stream {}
+#      format.turbo_stream {
+#        render turbo_stream: turbo_stream.remove(dom_id(resource))
+#      }
     end
   end
 
