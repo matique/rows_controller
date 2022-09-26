@@ -6,22 +6,11 @@ ruby:
         else
           url_for row
         end
-
   show = t('button.show')
   edit = t('button.edit')
   delete = t('button.delete')
 
 = link_to image_tag('show.gif', alt: show, title: show), url
 = link_to image_tag('plus.png', alt: edit, title: edit), "#{url}/edit"
-
-/          data: { turbo_confirm: 'Are you sure?', turbo: 'false' } },
-/          data: { turbo_confirm: 'Are you sure?' } },
-/          data: { confirm: 'Are you sure?', turbo: 'false' } },
-= button_to image_tag('minus.png', alt: delete, title: delete), url,
-  form: { style: 'display:inline-block;',
-          data: { turbo_confirm: 'Are you sure?' } },
-  method: :delete
-
-/= link_to t('button.delete').html_safe, url,
-/   remote: true,
-/   data: { confirm: 'Are you sure?' }, method: :delete
+= link_to image_tag('minus.png', alt: delete, title: delete), url,
+  data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }

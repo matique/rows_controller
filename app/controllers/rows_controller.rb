@@ -63,6 +63,7 @@ class RowsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to action: :index }
       format.json { head :no_content }
+      format.turbo_stream {}
     end
   end
 
