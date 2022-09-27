@@ -1,14 +1,14 @@
 / # Show complete flash
 / # flash[:notice] are faded out after 5 seconds
-/ # never call this file just 'flash' ==> empties flash
-/      //$('.flash_notice').fadeOut(5000, function() { $(this).remove(); });
 
-- p 1111111111111111
+css:
+  .flash_notice {
+    animation: animate_notice 5s linear 2s forwards;
+  }
+  @keyframes animate_notice {
+    from { opacity: 1; }
+    to { opacity: 0; }
+  }
+
 - (flash || {}).each do |key, value|
-  - p 222
-  - ic key, value
   p class="flash_#{key}" = sanitize(value)
-  - if key == :notice
-    javascript:
-      alert('uno');
-      document.querySelectorAll('.flash_notice').fadeOut(5000, function() { $(this).remove(); });

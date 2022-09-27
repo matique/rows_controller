@@ -1,5 +1,9 @@
 appraise "rails-7.0" do
   gem "rails", "~> 7.0"
+
+  group :test do
+    gem "turbo-rails"
+  end
 end
 
 appraise "rails-6.1" do

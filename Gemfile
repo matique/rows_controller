@@ -11,5 +11,4 @@ group :test do
   gem "slim"
   gem "simplecov", require: false
   gem "standard", require: false
-  gem "turbo-rails"
 end
