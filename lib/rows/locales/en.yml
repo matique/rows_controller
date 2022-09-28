@@ -5,9 +5,7 @@ en:
     destroyed: "%{model} deleted."
     editing:   "Editing %{model}"
     empty_list: "List %{model} is empty"
-    listing:   "Listing %{model}"
     new:       "New %{model}"
-    showing:   "Showing %{model}"
     updated:   "%{model} updated."
 
   button:

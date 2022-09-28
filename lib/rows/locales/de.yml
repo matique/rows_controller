@@ -5,9 +5,7 @@ de:
     destroyed: "%{model} gel&ouml;scht."
     editing:   "Editiere %{model}"
     empty_list: "Liste %{model} ist leer."
-    listing:   "Liste %{model}"
     new:       "Neue(r/s) %{model}"
-    showing:   "Zeige %{model}"
     updated:   "%{model} ge&auml;ndert."
 
   button:
