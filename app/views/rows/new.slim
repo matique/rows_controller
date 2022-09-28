@@ -3,9 +3,9 @@ ruby:
   # Requires resource model_name model_symbol
   #   partial 'form' template
 
-  content_for(:submit_left) {
+  content_for(:submit_left) do
     link_to t('button.back').html_safe, "/#{controller_name}", class: 'button'
-  }
+  end
 
 fieldset.wide class="mask" id=model_symbol
   legend = t('ui.new', model: model_name).html_safe

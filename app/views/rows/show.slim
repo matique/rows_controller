@@ -3,12 +3,12 @@ ruby:
   # Requires resource model_name model_symbol
   #   partial 'form' template
 
-  content_for(:submit_left) {
+  content_for(:submit_left) do
     link_to t('button.back').html_safe, url_for(action: :index), class: 'button'
-  }
-  content_for(:submit_right) {
+  end
+  content_for(:submit_right) do
     link_to t('button.edit').html_safe, url_for(action: :edit), class: 'button'
-  }
+  end
 
 fieldset.show class="wide mask" id=model_symbol
   legend = t('ui.showing', model: model_name).html_safe
