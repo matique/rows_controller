@@ -74,11 +74,13 @@ class OrdersController < RowsController
 The model class can be retrieved with the helper model_class.
 
 
-Rails 7
--------
+## Rails 7
 
-TURBO_STREAMS has been suppressed in "app/views/rows/_submit.slim".
-It caused some malfunction for e.g. displaying error messages.
+RowsController 3.1.0 is intended for Rails 7.
+In particular Hotwire caused some quirks
+which are handled by this version.
+Compatibility with older Rails versions are not intended
+and has not been checked.
 
 Older Rails versions may use "gem 'rows_controller', '= 3.0.5'".
 
