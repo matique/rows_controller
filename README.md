@@ -111,19 +111,6 @@ in the controller to filter params.
 
 ## Enhancements
 
-### copy
-
-The method "copy" was added to the RowsExtController.
-"copy" is like "new", however its attributes are initialized
-from an existing resource.
-The "id" of the cloned resource is set to nil.
-
-Usage of "copy" requires a defining in config/routes.rb. An example:
-
-    resources :orders
-      get 'copy', on: :member
-    end
-
 ### columns
 
 Add a class method 'column_headers' to the model
