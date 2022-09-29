@@ -108,7 +108,6 @@ in the controllers.
 Alternatively you may define the private method 'resource_params'
 in the controller to filter params.
 
-
 ## Enhancements
 
 ### columns
