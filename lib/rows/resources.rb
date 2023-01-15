@@ -2,11 +2,11 @@
 
 module Rows::Resources
   def resource
-    @_resource
+    @_resource || set_resource
   end
 
   def resources
-    @_resources
+    @_resources || set_resources
   end
 
   def set_resource(row = nil)

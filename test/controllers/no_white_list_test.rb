@@ -3,7 +3,7 @@ require "test_helper"
 class NoWhiteList < ApplicationRecord
 end
 
-class NoWhiteListController < TurbocController
+class NoWhiteListController < RowsController
 end
 
 class NoWhiteListControllerTest < ActionController::TestCase

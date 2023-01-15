@@ -140,4 +140,9 @@ Look for:
 - inherited_resources
 - decent_exposure
 
-Copyright (c) 2009-2022 [Dittmar Krall], released under the MIT license.
+## Miscellaneous
+
+Copyright (c) 2009-2022 Dittmar Krall (www.matiq.com),
+released under the MIT license:
+
+* https://opensource.org/licenses/MIT
