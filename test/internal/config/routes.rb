@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :blacks
   resources :orders
   namespace :order do
     resources :items

@@ -1,0 +1,2 @@
+class BlacksController < RowsController
+end
