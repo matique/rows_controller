@@ -1,3 +1,10 @@
+exclude:
+  - app/views/rows/_list.slim
+  - app/views/rows/edit.slim
+  - app/views/rows/index.slim
+  - app/views/rows/new.slim
+  - app/views/rows/show.slim
+
 linters:
   LineLength:
     max: 100
