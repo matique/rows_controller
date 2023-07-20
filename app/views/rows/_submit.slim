@@ -10,7 +10,7 @@ ruby:
   left ||= nil
   right ||= nil
 
-.rows-submit style="width:100%" data= { turbo: 'false' }
+.rows-submit style="width:100%" data={turbo: 'false'}
   input style="display:none" type="submit" name="commit" value="OK"
   p style="float:left"
     = render '/rows/submit_part', content: :submit_left, names: left
