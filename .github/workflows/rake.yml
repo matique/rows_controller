@@ -11,11 +11,9 @@ jobs:
         ruby_version: ["3.0", 3.2]
         gemfile:
           - Gemfile
-#          - gemfiles/Gemfile.rails-5.2.x
-#          - gemfiles/Gemfile.rails-6.0.x
-#          - gemfiles/Gemfile.rails-6.1.x
-#          - gemfiles/Gemfile.rails-7.0.x
-#          - gemfiles/Gemfile.rails-7.1.x
+          - gemfiles/Gemfile.rails-6.1
+          - gemfiles/Gemfile.rails-7.0
+          - gemfiles/Gemfile.rails-7.1
     runs-on: ubuntu-latest
 
     steps:
