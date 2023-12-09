@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.description = "YourController < RowsController ( < ApplicationController)."
   s.authors = ["Dittmar Krall"]
   s.email = ["dittmar.krall@matiq.com"]
-  s.homepage = "http://matiq.com"
+  s.homepage = "https://github.com/matique/rows_controller"
   s.license = "MIT"
   s.platform = Gem::Platform::RUBY
 
