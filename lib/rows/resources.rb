@@ -11,14 +11,14 @@ module Rows::Resources
 
   def set_resource(row = nil)
     row ||= model_class.find_by_id(params[:id].to_i)
-    instance_variable_set("@#{model_symbol}", row)
+    instance_variable_set(:"@#{model_symbol}", row)
     @_resource = row
     @row = row
   end
 
   def set_resources(rows = nil)
     rows ||= model_class.all
-    instance_variable_set("@#{model_symbol_plural}", rows)
+    instance_variable_set(:"@#{model_symbol_plural}", rows)
     @_resources = rows
     @rows = rows
   end
