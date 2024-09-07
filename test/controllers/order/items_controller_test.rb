@@ -4,7 +4,8 @@ require "test_helper"
 
 class Order::ItemsControllerTest < ActionController::TestCase
   def setup
-    @order_item = order_items(:one)
+    # @order_item = order_items(:one)
+    @order_item = Order::Item.create price: "Price"
   end
 
   test "simple" do

@@ -1,12 +1,9 @@
 require "test_helper"
 
 class OrdersControllerTest < ActionController::TestCase
-  # class OrdersControllerTest < ActionDispatch::IntegrationTest
-  # class OrdersControllerTest < ActiveSupport::TestCase
-  fixtures :all
-
   def setup
-    @order = orders(:one)
+    # @order = orders(:one)
+    @order = Order.create name: "Name"
     OrdersController.model_class Order # reset
   end
 
