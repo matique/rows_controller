@@ -1,6 +1,7 @@
 # RowsController
 [![Gem Version](https://badge.fury.io/rb/rows_controller.svg)](https://badge.fury.io/rb/rows_controller)
 [![GEM Downloads](https://img.shields.io/gem/dt/rows_controller?color=168AFE&logo=ruby&logoColor=FE1616)](https://rubygems.org/gems/rows_controller)
+â[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](http://choosealicense.com/licenses/mit/)
 
 DRYs Rails controllers. Imagine replacing that @order by 'resource' in the
 controllers/views and, imho, an area for DRYing appears.
@@ -77,7 +78,7 @@ The model class can be retrieved with the helper model_class.
 
 ## Rails 7
 
-RowsController 3.1.0 is intended for Rails 7.
+RowsController 3.1.* is intended for Rails 7.
 In particular Hotwire caused some quirks
 which are handled by this version.
 Compatibility with older Rails versions are not intended
