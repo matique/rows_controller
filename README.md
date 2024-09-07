@@ -1,7 +1,7 @@
 # RowsController
 [![Gem Version](https://badge.fury.io/rb/rows_controller.svg)](https://badge.fury.io/rb/rows_controller)
 [![GEM Downloads](https://img.shields.io/gem/dt/rows_controller?color=168AFE&logo=ruby&logoColor=FE1616)](https://rubygems.org/gems/rows_controller)
-â[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](http://choosealicense.com/licenses/mit/)
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](http://choosealicense.com/licenses/mit/)
 
 DRYs Rails controllers. Imagine replacing that @order by 'resource' in the
 controllers/views and, imho, an area for DRYing appears.
