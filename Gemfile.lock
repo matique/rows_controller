@@ -228,7 +228,7 @@ GEM
     regexp_parser (2.9.2)
     reline (0.5.10)
       io-console (~> 0.5)
-    rexml (3.3.7)
+    rexml (3.3.9)
     ricecream (0.2.1)
     rubocop (1.65.1)
       json (~> 2.3)
