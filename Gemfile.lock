@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rows_controller (3.1.6)
+    rows_controller (3.1.7)
 
 GEM
   remote: https://rubygems.org/
