@@ -6,12 +6,12 @@
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](http://choosealicense.com/licenses/mit/)
 
 DRYs Rails controllers. Imagine replacing that @order by 'resource' in the
-controllers/views and, imho, an area for DRYing appears.
+controllers/views and, IMHO, an area for DRYing appears.
 Instead of:
 
 ~~~ruby
 class OrdersController < ApplicationController
- .....
+ .....          # quite a lot of lines from "rails generate scaffold ..."
  private
   def order_params
    params.require(:order).permit(:name)
@@ -78,6 +78,13 @@ class OrdersController < RowsController
 The model class can be retrieved with the helper model_class.
 
 
+## Rails 8
+
+RowsController 3.2.* is intended for Rails 8+.
+In particular, *turbo stream* is used for row deletion.
+Older Rails versions may use "gem 'rows_controller', '= 3.1.7'".
+
+
 ## Rails 7
 
 RowsController 3.1.* is intended for Rails 7.
@@ -127,9 +134,9 @@ a class method which returns the columns defined by the ActiveRecord model.
 As usual:
 
 ~~~ruby
-gem 'rows_controller' # in Gemfile
+gem "rows_controller" # in Gemfile
 bundle
-( cd spec/dummy; rake db:create db:migrate ) # not required for Rails 6
+( cd spec/dummy; rake db:create db:migrate ) # not required for Rails 6+
 rake
 ~~~
 
@@ -145,5 +152,5 @@ Look for:
 
 ## Miscellaneous
 
-Copyright (c) 2009-2024 Dittmar Krall (www.matiq.com),
+Copyright (c) 2009-2025 Dittmar Krall (www.matiq.com),
 released under the [MIT license](https://opensource.org/licenses/MIT).
