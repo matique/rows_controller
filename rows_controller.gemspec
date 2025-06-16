@@ -17,6 +17,7 @@ Gem::Specification.new do |s|
 
   s.files = Dir["{app,lib}/**/*", "MIT-LICENSE", "README.md"]
   s.require_paths = ["lib"]
+  s.required_ruby_version = "~> 3"
 
   s.add_development_dependency "bundler"
   s.add_development_dependency "rake"

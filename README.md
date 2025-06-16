@@ -1,9 +1,10 @@
 # RowsController
-[![Gem Version](https://badge.fury.io/rb/rows_controller.svg)](https://badge.fury.io/rb/rows_controller)
-[![GEM Downloads](https://img.shields.io/gem/dt/rows_controller?color=168AFE&logo=ruby&logoColor=FE1616)](https://rubygems.org/gems/rows_controller)
-[![rake](https://github.com/matique/rows_controller/actions/workflows/rake.yml/badge.svg)](https://github.com/matique/rows_controller/actions/workflows/rake.yml)
-[![Ruby Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://github.com/standardrb/standard)
-[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](http://choosealicense.com/licenses/mit/)
+
+[![Gem Version](https://img.shields.io/gem/v/rows_controller?color=168AFE&logo=rubygems&logoColor=FE1616)](https://rubygems.org/gems/rows_controller)
+[![Downloads](https://img.shields.io/gem/dt/rows_controller?color=168AFE&logo=rubygems&logoColor=FE1616)](https://rubygems.org/gems/rows_controller)
+[![GitHub Build](https://img.shields.io/github/actions/workflow/status/matique/rows_controller/rake.yml?logo=github)](https://github.com/matique/rows_controller/actions/workflows/rake.yml)
+[![Ruby Style Guide](https://img.shields.io/badge/code_style-standard-168AFE.svg)](https://github.com/standardrb/standard)
+[![MIT License](https://img.shields.io/badge/license-MIT-168AFE.svg)](http://choosealicense.com/licenses/mit/)
 
 DRYs Rails controllers. Imagine replacing that @order by 'resource' in the
 controllers/views and, IMHO, an area for DRYing appears.
