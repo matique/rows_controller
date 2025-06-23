@@ -31,10 +31,10 @@ class OrdersController < RowsController  # < ApplicationController
 end
 ~~~
 
-I.e. RowsController defines all the usual methods (index, show, edit,...).
+I.e. _RowsController_ defines all the usual methods (index, show, edit,...).
 
 The methods may be redefined in OrdersController
-(overwrites methods from RowsController).
+(overwrites methods from _RowsController_).
 
 Low level methods like 'resources' may be redefined as well.
 An example:
@@ -45,21 +45,21 @@ def resources
 end
 ~~~
 
-RowsController inherites from ApplicationController, i.e. all the helpers
+_RowsController_ inherites from ApplicationController, i.e. all the helpers
 defined there will be available.
 
 
 ## Customizing of views
 
-RowsController initializes some instance variables used in the views
+_RowsController_ initializes some instance variables used in the views
 (e.g. @order, @orders; legacy @row & @rows are still supported).
 Furthermore, the helpers resource, resources, set_resource and
 set_resources are available. You guess their usage.
 
 Providing e.g. an "#{Rails.root}/app/views/order/index.html.erb"
-overwrites the default RowsController view as Rails will first look
+overwrites the default _RowsController_ view as Rails will first look
 into the directory "#{Rails.root}/app/views" before looking
-into the RowsController.
+into the _RowsController_.
 
 Similarly, partials '\_row\_buttons' and '\_list\_footer' may be overwritten
 as well.
@@ -67,7 +67,7 @@ as well.
 
 ## model_class
 
-RowsController guesses the model from params[:controller]. This can
+_RowsController_ guesses the model from params[:controller]. This can
 be changed by:
 
 ~~~ruby
@@ -81,14 +81,14 @@ The model class can be retrieved with the helper model_class.
 
 ## Rails 8
 
-RowsController 3.2.* is intended for Rails 8+.
+_RowsController_ 3.2.* is intended for Rails 8+.
 In particular, *turbo stream* is used for row deletion.
 Older Rails versions may use "gem 'rows_controller', '= 3.1.7'".
 
 
 ## Rails 7
 
-RowsController 3.1.* is intended for Rails 7.
+_RowsController_ 3.1.* is intended for Rails 7.
 In particular Hotwire caused some quirks
 which are handled by this version.
 Compatibility with older Rails versions are not intended

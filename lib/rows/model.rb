@@ -2,10 +2,8 @@
 
 module Rows::Model
   def model_class
-    # xrubocop:disable
     @_model_class ||= self.class.model_class ||
       Kernel.const_get(params[:controller].classify)
-    # xrubocop:enable
   end
 
   if Rails::VERSION::MAJOR > 3
