@@ -7,7 +7,7 @@ group :test do
   gem "capybara"
   gem "cuco"
   gem "rails-controller-testing"
-  gem "ricecream"
+  gem "ricecream", require: false
   gem "simplecov", require: false
   gem "slim"
   gem "sqlite3"
