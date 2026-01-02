@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require "rows/resources"
 require "rows/model"
 require "rows/utils"

@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 module Rows::Resources
   def resource
     @_resource || set_resource

@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 module Rows::Model
   def model_class
     @_model_class ||= self.class.model_class ||
