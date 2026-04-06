@@ -2,6 +2,7 @@ source "https://rubygems.org"
 gemspec
 
 gem "rails"
+gem "mini_portile2"
 
 group :test do
   gem "capybara"
