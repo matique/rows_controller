@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rows_controller (3.2.2)
+    rows_controller (3.2.3)
 
 GEM
   remote: https://rubygems.org/
@@ -458,7 +458,7 @@ CHECKSUMS
   regexp_parser (2.12.0) sha256=35a916a1d63190ab5c9009457136ae5f3c0c7512d60291d0d1378ba18ce08ebb
   reline (0.6.3) sha256=1198b04973565b36ec0f11542ab3f5cfeeec34823f4e54cebde90968092b1835
   ricecream (0.2.1) sha256=d32d7781d554d1e1ec44325cabeb22f604a74c563c08d2cfe82f4e2e2bb3ac93
-  rows_controller (3.2.2)
+  rows_controller (3.2.3)
   rubocop (1.84.2) sha256=5692cea54168f3dc8cb79a6fe95c5424b7ea893c707ad7a4307b0585e88dbf5f
   rubocop-ast (1.49.1) sha256=4412f3ee70f6fe4546cc489548e0f6fcf76cafcfa80fa03af67098ffed755035
   rubocop-performance (1.26.1) sha256=cd19b936ff196df85829d264b522fd4f98b6c89ad271fa52744a8c11b8f71834
